@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elyra AI Solutions — Intelligence · Innovation · Impact</title>
+<meta name="description" content="Elyra AI Solutions builds enterprise AI software — CRM, LMS, ERP, SEO agents, lead nurturing and web development powered by artificial intelligence.">
+<meta name="keywords" content="AI solutions, enterprise AI, CRM, LMS, ERP, SEO agent, lead nurturing, web development, artificial intelligence, Elyra AI">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Elyra AI Solutions — Intelligence · Innovation · Impact">
+<meta property="og:description" content="Enterprise AI software for CRM, LMS, ERP, SEO and more. Built to scale your business with intelligent automation.">
+<meta property="og:image" content="/Elyra Ai solution.png">
+<meta property="og:url" content="https://elyraai.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Elyra AI Solutions">
+<meta name="twitter:description" content="Enterprise AI software — CRM, LMS, ERP, SEO agents and web development.">
+<link rel="canonical" href="https://elyraai.com">
+<style>
+/* ─── Reset & root ─── */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#04050a;
+  --green:#00c896;
+  --green-b:#00e676;
+  --border:rgba(0,200,150,.14);
+  --glass:rgba(4,14,10,.75);
+  --dim:rgba(0,200,150,.45);
+  --white:rgba(255,255,255,.88);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Segoe UI',system-ui,Arial,sans-serif;overflow-x:hidden}
+
+/* ─── Background canvas ─── */
+#bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+/* ─── Navbar ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:68px;padding:0 clamp(20px,5vw,72px);
+  display:flex;align-items:center;gap:24px;
+  background:rgba(4,5,10,.88);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(18px);
+}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.nav-logo-img{height:36px;width:auto;mix-blend-mode:screen;object-fit:contain}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1}
+.nav-logo-text strong{font-size:13px;letter-spacing:4px;font-weight:400;color:#fff;text-transform:uppercase}
+.nav-logo-text span{font-size:8.5px;letter-spacing:3px;color:var(--green);text-transform:uppercase;margin-top:2px}
+.nav-spacer{flex:1}
+.nav-links{display:flex;align-items:center;gap:18px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.72);text-decoration:none;transition:color .25s;white-space:nowrap}
+.nav-links a:hover{color:var(--green-b)}
+.nav-cta{
+  font-size:9.5px;letter-spacing:2px;text-transform:uppercase;
+  padding:9px 22px;border:1px solid var(--green);color:var(--green);
+  background:transparent;text-decoration:none;border-radius:2px;
+  transition:background .25s,color .25s,box-shadow .25s;white-space:nowrap;
+}
+.nav-cta:hover{background:rgba(0,200,150,.14);color:#fff;box-shadow:0 0 16px rgba(0,200,150,.25)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.ham span{width:22px;height:1.5px;background:var(--dim);display:block;transition:.3s}
+@media(max-width:820px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;
+    background:rgba(4,5,10,.97);padding:20px 24px;gap:18px;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .ham{display:flex}
+  .nav-cta{display:none}
+}
+
+/* ─── Section base ─── */
+section{position:relative;z-index:2;width:100%;padding:100px clamp(20px,5vw,72px)}
+.inner{max-width:1180px;margin:0 auto;width:100%}
+
+/* section headers */
+.s-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:8.5px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--green);border:1px solid rgba(0,200,150,.22);
+  border-radius:50px;padding:5px 14px;margin-bottom:20px;
+  background:rgba(0,200,150,.06);
+  opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s;
+}
+.s-chip::before{content:'◆';font-size:6px}
+.s-head{
+  font-size:clamp(30px,4.5vw,56px);font-weight:200;letter-spacing:2px;
+  text-transform:uppercase;line-height:1.1;margin-bottom:18px;
+  opacity:0;transform:translateY(14px);transition:opacity .7s .1s,transform .7s .1s;
+}
+.s-head em{font-style:normal;font-weight:700;color:var(--green-b)}
+.s-rule{
+  height:1px;width:0;
+  background:linear-gradient(90deg,var(--green),transparent);
+  margin-bottom:52px;transition:width 1.1s .2s ease;
+}
+.sec-visible .s-chip{opacity:1;transform:translateY(0)}
+.sec-visible .s-head{opacity:1;transform:translateY(0)}
+.sec-visible .s-rule{width:min(260px,40vw)}
+
+/* ─── HERO ─── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding-top:120px;padding-bottom:60px;
+  overflow:hidden;
+}
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,200,150,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,200,150,.035) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 40%,transparent 100%);
+}
+
+/* hero badge */
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:8.5px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--green);border:1px solid rgba(0,200,150,.28);
+  border-radius:50px;padding:6px 18px;margin-bottom:36px;
+  background:rgba(0,200,150,.07);
+  opacity:0;animation:fadeUp .7s .2s forwards;
+}
+.hero-badge::before{content:'●';font-size:7px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* hero logo canvas */
+#hero-logo-wrap{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  margin-bottom:32px;opacity:0;animation:fadeUp .9s .4s forwards;
+}
+#hero-logo-canvas{
+  width:clamp(240px,45vw,460px);height:auto;
+  filter:drop-shadow(0 0 28px rgba(0,230,118,.45)) drop-shadow(0 0 70px rgba(0,200,150,.18));
+}
+/* ring glow behind logo */
+.hero-logo-ring{
+  position:absolute;inset:-24px;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(0,200,150,.12) 0%,transparent 65%);
+  animation:ringPulse 3.5s ease-in-out infinite;pointer-events:none;
+}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.06);opacity:1}}
+
+/* hero text */
+.hero-tag{
+  font-size:clamp(12px,1.8vw,18px);font-weight:300;letter-spacing:clamp(4px,1.2vw,10px);
+  color:rgba(255,255,255,.7);text-transform:uppercase;margin-bottom:12px;
+  opacity:0;animation:fadeUp .8s .7s forwards;
+}
+.hero-title{
+  font-size:clamp(26px,4.5vw,52px);font-weight:200;letter-spacing:clamp(2px,.8vw,6px);
+  line-height:1.2;text-transform:uppercase;margin-bottom:20px;
+  opacity:0;animation:fadeUp .8s .7s forwards;
+}
+.hero-title em{font-style:normal;font-weight:700;color:var(--green-b)}
+.hero-desc{
+  font-size:clamp(12px,1.2vw,14px);color:rgba(255,255,255,.72);
+  line-height:2;letter-spacing:.4px;max-width:560px;margin:0 auto 44px;
+  opacity:0;animation:fadeUp .8s 1.05s forwards;
+}
+.hero-btns{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .8s 1.2s forwards;
+}
+.btn-solid{
+  padding:14px clamp(24px,3vw,40px);background:var(--green);
+  color:#04050a;font-size:9.5px;letter-spacing:3px;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;font-weight:700;
+  transition:background .25s,box-shadow .25s,transform .2s;
+  box-shadow:0 0 32px rgba(0,200,150,.38);border:1px solid transparent;
+}
+.btn-solid:hover{background:var(--green-b);box-shadow:0 0 52px rgba(0,230,118,.6);transform:translateY(-2px)}
+.btn-ghost{
+  padding:14px clamp(24px,3vw,40px);border:1px solid rgba(0,200,150,.35);
+  color:var(--green);font-size:9.5px;letter-spacing:3px;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;background:transparent;
+  transition:border-color .25s,background .25s,color .25s,transform .2s;
+}
+.btn-ghost:hover{border-color:var(--green);background:rgba(0,200,150,.1);color:#fff;transform:translateY(-2px)}
+
+/* hero stats row */
+.hero-stats{
+  display:flex;gap:clamp(24px,4vw,64px);justify-content:center;flex-wrap:wrap;
+  margin-top:56px;padding-top:40px;border-top:1px solid var(--border);
+  opacity:0;animation:fadeUp .8s 1.5s forwards;
+}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:clamp(22px,3vw,34px);font-weight:200;color:var(--green-b);letter-spacing:2px;display:block}
+.hero-stat-lbl{font-size:8.5px;letter-spacing:3px;color:rgba(255,255,255,.6);text-transform:uppercase;margin-top:4px;display:block}
+
+/* scroll hint */
+.hero-scroll{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  font-size:8.5px;letter-spacing:3px;color:rgba(255,255,255,.2);
+  text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px;
+  opacity:0;animation:fadeUp .8s 2s forwards;
+}
+.hero-scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,transparent,var(--green));animation:scrollPulse 1.9s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.25}50%{opacity:.9}}
+
+/* ─── ABOUT ─── */
+#about{padding-top:80px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:40px}}
+
+.about-body p{
+  font-size:clamp(12.5px,1.1vw,14px);line-height:2.1;
+  color:rgba(255,255,255,.78);margin-bottom:18px;
+  opacity:0;transform:translateY(12px);transition:opacity .7s,transform .7s;
+}
+.about-body p:nth-child(2){transition-delay:.14s}
+.about-body p:nth-child(3){transition-delay:.28s}
+.sec-visible .about-body p{opacity:1;transform:translateY(0)}
+
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat-card{
+  background:var(--glass);border:1px solid var(--border);border-radius:10px;
+  padding:clamp(18px,2.5vw,32px) 20px;text-align:center;backdrop-filter:blur(10px);
+  position:relative;overflow:hidden;cursor:default;
+  opacity:0;transform:scale(.94);transition:opacity .6s,transform .6s,border-color .3s,box-shadow .3s;
+}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0;transition:opacity .3s}
+.stat-card:hover::before{opacity:1}
+.stat-card:hover{border-color:rgba(0,200,150,.4);box-shadow:0 8px 32px rgba(0,200,150,.12)}
+.stat-card:nth-child(1){transition-delay:.22s}.stat-card:nth-child(2){transition-delay:.34s}
+.stat-card:nth-child(3){transition-delay:.46s}.stat-card:nth-child(4){transition-delay:.58s}
+.sec-visible .stat-card{opacity:1;transform:scale(1)}
+.stat-n{display:block;font-size:clamp(28px,4vw,44px);font-weight:200;color:var(--green-b);letter-spacing:2px;line-height:1}
+.stat-l{display:block;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,200,150,.85);margin-top:8px}
+
+/* ─── SERVICES ─── */
+#services{padding-bottom:80px;min-height:auto}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.services-grid{grid-template-columns:1fr}}
+
+.svc-card{
+  background:var(--bg);padding:clamp(28px,3vw,44px) clamp(20px,2.5vw,36px);
+  position:relative;overflow:hidden;cursor:default;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .65s,transform .65s,background .3s;
+}
+.svc-card:nth-child(1){transition-delay:.04s}.svc-card:nth-child(2){transition-delay:.10s}
+.svc-card:nth-child(3){transition-delay:.16s}.svc-card:nth-child(4){transition-delay:.22s}
+.svc-card:nth-child(5){transition-delay:.28s}.svc-card:nth-child(6){transition-delay:.34s}
+.sec-visible .svc-card{opacity:1;transform:translateY(0)}
+.svc-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(0,200,150,.08),transparent 55%);opacity:0;transition:opacity .4s}
+.svc-card:hover{background:rgba(0,30,18,.9)}
+.svc-card:hover::after{opacity:1}
+/* top accent line on hover */
+.svc-card::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--green);transition:width .4s ease}
+.svc-card:hover::before{width:100%}
+
+.svc-num{font-size:8px;letter-spacing:3px;color:rgba(0,200,150,.3);margin-bottom:20px}
+.svc-emoji{font-size:2rem;display:block;margin-bottom:16px;transition:transform .3s}
+.svc-card:hover .svc-emoji{transform:scale(1.15) translateY(-2px)}
+.svc-name{font-size:clamp(11px,1.1vw,13px);letter-spacing:2.5px;font-weight:500;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:12px}
+.svc-desc{font-size:clamp(11px,1vw,12.5px);color:rgba(255,255,255,.7);line-height:1.9}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.svc-tag{font-size:8px;letter-spacing:1.5px;padding:3px 8px;border:1px solid rgba(0,200,150,.22);color:var(--dim);border-radius:2px;text-transform:uppercase}
+
+/* ─── AGENTS ─── */
+#agents{padding-bottom:80px}
+.agents-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+@media(max-width:768px){.agents-grid{grid-template-columns:1fr}}
+.agent-card{background:rgba(4,14,10,.72);border:1px solid rgba(0,200,150,.14);border-radius:12px;padding:32px;position:relative;overflow:hidden;transition:border-color .3s,transform .25s;cursor:default}
+.agent-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(0,200,150,.06),transparent 65%);pointer-events:none}
+.agent-card:hover{border-color:rgba(0,200,150,.35);transform:translateY(-4px)}
+.agent-icon{font-size:2rem;margin-bottom:16px;display:block}
+.agent-label{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.agent-name{font-size:20px;font-weight:300;letter-spacing:1px;color:rgba(255,255,255,.92);margin-bottom:12px;line-height:1.3}
+.agent-name strong{font-weight:700;color:var(--green-b)}
+.agent-desc{font-size:12.5px;color:rgba(255,255,255,.52);line-height:1.85;margin-bottom:20px}
+.agent-features{list-style:none;display:flex;flex-direction:column;gap:7px}
+.agent-features li{font-size:11.5px;color:rgba(255,255,255,.5);padding-left:16px;position:relative;line-height:1.5}
+.agent-features li::before{content:'▸';position:absolute;left:0;color:var(--green);font-size:9px;top:3px}
+.agent-badge{position:absolute;top:20px;right:20px;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(0,200,150,.3);border-radius:10px;color:var(--green)}
+
+/* ─── BLOG PREVIEW ─── */
+#blog-preview{padding-bottom:80px}
+.bp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+@media(max-width:900px){.bp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.bp-grid{grid-template-columns:1fr}}
+.bp-card{background:rgba(4,14,10,.72);border:1px solid rgba(0,200,150,.14);border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .25s;text-decoration:none;display:block}
+.bp-card:hover{border-color:rgba(0,200,150,.35);transform:translateY(-4px)}
+.bp-thumb{height:110px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:linear-gradient(135deg,#040e08,#0a2018);border-bottom:1px solid rgba(0,200,150,.1);position:relative}
+.bp-thumb::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,200,150,.1),transparent 70%)}
+.bp-body{padding:16px}
+.bp-cat{font-size:9px;letter-spacing:2.5px;color:var(--green);text-transform:uppercase;margin-bottom:7px}
+.bp-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.85);line-height:1.45;margin-bottom:8px}
+.bp-excerpt{font-size:11.5px;color:rgba(255,255,255,.42);line-height:1.75;margin-bottom:10px}
+.bp-meta{font-size:9.5px;letter-spacing:1px;color:rgba(0,200,150,.5);display:flex;gap:14px}
+.bp-more{display:inline-block;margin-top:28px;font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);text-decoration:none;border-bottom:1px solid rgba(0,200,150,.3);padding-bottom:2px;transition:border-color .2s}
+.bp-more:hover{border-color:var(--green)}
+
+/* ─── VISION ─── */
+#vision{padding-bottom:80px}
+.vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+@media(max-width:768px){.vision-grid{grid-template-columns:1fr}}
+.timeline{position:relative;padding-left:44px}
+.timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--green),transparent);opacity:.4}
+.tl-item{
+  position:relative;margin-bottom:clamp(24px,3vw,38px);
+  opacity:0;transform:translateX(-14px);transition:opacity .6s,transform .6s;
+}
+.tl-item:nth-child(1){transition-delay:.14s}.tl-item:nth-child(2){transition-delay:.26s}
+.tl-item:nth-child(3){transition-delay:.38s}.tl-item:nth-child(4){transition-delay:.50s}
+.tl-item:nth-child(5){transition-delay:.62s}
+.sec-visible .tl-item{opacity:1;transform:translateX(0)}
+.tl-dot{position:absolute;left:-44px;top:2px;width:18px;height:18px;border:1.5px solid var(--green);border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center}
+.tl-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--green-b);box-shadow:0 0 8px var(--green)}
+.tl-year{font-size:8.5px;letter-spacing:3px;color:var(--green);margin-bottom:5px}
+.tl-head{font-size:clamp(12px,1.2vw,15px);font-weight:500;letter-spacing:1px;margin-bottom:6px;color:rgba(255,255,255,.85)}
+.tl-desc{font-size:clamp(11px,1vw,12.5px);color:rgba(255,255,255,.72);line-height:1.85}
+
+/* galaxy canvas */
+#orb-canvas{width:100%;max-width:360px;aspect-ratio:1;display:block;margin:auto;opacity:0;transition:opacity 1.2s .3s;border-radius:50%;overflow:hidden}
+.sec-visible #orb-canvas{opacity:1}
+
+/* ─── REVIEWS ─── */
+#reviews{min-height:auto;padding-bottom:80px}
+.rev-wrap{overflow:hidden}
+.rev-track{display:flex;gap:18px;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.rev-card{
+  min-width:clamp(260px,32vw,340px);
+  background:var(--glass);border:1px solid var(--border);border-radius:12px;
+  padding:clamp(22px,2.5vw,32px);backdrop-filter:blur(10px);flex-shrink:0;
+  transition:border-color .3s,box-shadow .3s;position:relative;overflow:hidden;
+}
+.rev-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,200,150,.5),transparent);opacity:0;transition:opacity .3s}
+.rev-card:hover::before{opacity:1}
+.rev-card:hover{border-color:rgba(0,200,150,.32);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.rev-stars{color:#f5c842;font-size:13px;margin-bottom:14px;letter-spacing:2px}
+.rev-text{font-size:clamp(11.5px,1vw,13px);color:rgba(255,255,255,.78);line-height:1.9;font-style:italic;margin-bottom:20px}
+.rev-author{display:flex;align-items:center;gap:12px}
+.rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--green),#005533);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;border:1px solid rgba(0,200,150,.3)}
+.rev-name{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85)}
+.rev-role{font-size:9.5px;letter-spacing:.8px;color:var(--dim);margin-top:2px}
+.carousel-btns{display:flex;gap:8px;margin-top:22px}
+.cbtn{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;background:var(--glass);color:var(--green);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:border-color .25s,box-shadow .25s,background .25s}
+.cbtn:hover{border-color:var(--green);box-shadow:0 0 14px rgba(0,200,150,.28);background:rgba(0,200,150,.08)}
+
+/* ─── INSTAGRAM ─── */
+#instagram{min-height:auto;padding-bottom:80px}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:580px){.ig-grid{grid-template-columns:repeat(2,1fr)}}
+.ig-card{
+  aspect-ratio:1;background:var(--glass);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;cursor:pointer;position:relative;
+  opacity:0;transform:scale(.90);
+  transition:opacity .55s,transform .55s,border-color .3s;
+}
+.ig-card:nth-child(1){transition-delay:.04s}.ig-card:nth-child(2){transition-delay:.09s}.ig-card:nth-child(3){transition-delay:.14s}
+.ig-card:nth-child(4){transition-delay:.19s}.ig-card:nth-child(5){transition-delay:.24s}.ig-card:nth-child(6){transition-delay:.29s}
+.sec-visible .ig-card{opacity:1;transform:scale(1)}
+.ig-card:hover{border-color:rgba(0,200,150,.38)}
+.ig-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#04090a,#0a1e14,#060e0a);position:relative}
+.ig-emoji{font-size:2.2rem;opacity:.38;transition:opacity .3s,transform .3s}
+.ig-card:hover .ig-emoji{opacity:.9;transform:scale(1.18)}
+.ig-overlay{position:absolute;inset:0;background:rgba(0,200,150,0);transition:background .3s}
+.ig-card:hover .ig-overlay{background:rgba(0,200,150,.09)}
+.ig-label{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;font-size:8.5px;letter-spacing:1.5px;color:rgba(255,255,255,.42);background:linear-gradient(0deg,rgba(4,5,10,.8),transparent)}
+.ig-follow{display:inline-flex;align-items:center;gap:8px;margin-top:20px;color:var(--green);text-decoration:none;font-size:11px;letter-spacing:2px;transition:color .25s}
+.ig-follow:hover{color:var(--green-b)}
+.ig-follow svg{width:15px;height:15px;fill:currentColor}
+
+/* ─── BLOG ─── */
+#blog-preview{min-height:auto;padding-bottom:80px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.blog-grid{grid-template-columns:1fr}}
+.blog-card{
+  background:var(--glass);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;cursor:pointer;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .65s,transform .65s,border-color .3s,box-shadow .3s;
+}
+.blog-card:nth-child(1){transition-delay:.06s}.blog-card:nth-child(2){transition-delay:.16s}.blog-card:nth-child(3){transition-delay:.26s}
+.sec-visible .blog-card{opacity:1;transform:translateY(0)}
+.blog-card:hover{border-color:rgba(0,200,150,.3);box-shadow:0 16px 48px rgba(0,0,0,.5);transform:translateY(-4px)!important}
+.blog-thumb{height:120px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;border-bottom:1px solid var(--border);position:relative;background:linear-gradient(135deg,#040e08,#0a1e14)}
+.blog-thumb::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,200,150,.13),transparent 70%)}
+.blog-body{padding:clamp(16px,2vw,22px)}
+.blog-cat{font-size:8.5px;letter-spacing:3px;color:var(--green);text-transform:uppercase;margin-bottom:8px}
+.blog-title{font-size:clamp(12.5px,1.2vw,14px);font-weight:600;margin-bottom:9px;color:rgba(255,255,255,.85);line-height:1.45}
+.blog-exc{font-size:11.5px;color:rgba(255,255,255,.68);line-height:1.8;margin-bottom:12px}
+.blog-meta{font-size:9px;letter-spacing:1px;color:var(--dim);display:flex;gap:14px}
+.view-all{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:11px 24px;border:1px solid rgba(0,200,150,.3);color:var(--green);text-decoration:none;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;border-radius:2px;transition:background .25s,border-color .25s,color .25s}
+.view-all:hover{background:rgba(0,200,150,.1);border-color:var(--green);color:#fff}
+
+/* ─── CONTACT ─── */
+#contact{padding-bottom:80px;min-height:auto}
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(32px,5vw,72px)}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:32px}}
+.ci-item{
+  display:flex;align-items:center;gap:14px;margin-bottom:22px;
+  opacity:0;transform:translateX(-12px);transition:opacity .6s,transform .6s;
+}
+.ci-item:nth-child(1){transition-delay:.12s}.ci-item:nth-child(2){transition-delay:.22s}
+.ci-item:nth-child(3){transition-delay:.32s}.ci-item:nth-child(4){transition-delay:.42s}
+.sec-visible .ci-item{opacity:1;transform:translateX(0)}
+.ci-ico{width:40px;height:40px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(0,200,150,.07);flex-shrink:0;transition:border-color .25s}
+.ci-item:hover .ci-ico{border-color:rgba(0,200,150,.4)}
+.ci-lbl{font-size:8.5px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:3px}
+.ci-val{font-size:13px;color:rgba(255,255,255,.9)}
+.cform{opacity:0;transform:translateY(14px);transition:opacity .75s .15s,transform .75s .15s}
+.sec-visible .cform{opacity:1;transform:translateY(0)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.frow{grid-template-columns:1fr}}
+.fg{margin-bottom:12px}
+.fg label{display:block;font-size:8.5px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:7px}
+.fg input,.fg textarea,.fg select{
+  width:100%;background:rgba(0,14,8,.5);border:1px solid var(--border);
+  border-radius:6px;padding:12px 14px;color:#fff;font-family:inherit;
+  font-size:13px;outline:none;transition:border-color .25s,box-shadow .25s;appearance:none;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,200,150,.08)}
+.fg textarea{height:110px;resize:none}
+.fg select option{background:#04090a;color:#fff}
+.fsub{
+  width:100%;padding:14px;background:var(--green);border:none;border-radius:6px;
+  color:#04050a;font-family:inherit;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;font-weight:700;cursor:pointer;
+  transition:background .25s,box-shadow .25s,transform .2s;
+  box-shadow:0 0 24px rgba(0,200,150,.28);
+}
+.fsub:hover{background:var(--green-b);box-shadow:0 0 40px rgba(0,230,118,.48);transform:translateY(-1px)}
+.fmsg{margin-top:10px;font-size:11px;letter-spacing:.8px;color:var(--green-b);min-height:18px}
+
+/* ─── FOOTER ─── */
+footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:clamp(36px,5vw,60px) clamp(20px,5vw,72px) clamp(20px,3vw,32px)}
+.foot-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:clamp(20px,3vw,40px);margin-bottom:clamp(24px,3vw,40px)}
+@media(max-width:768px){.foot-inner{grid-template-columns:1fr 1fr;gap:24px}}
+@media(max-width:420px){.foot-inner{grid-template-columns:1fr}}
+.foot-logo-wrap{display:flex;align-items:center;gap:10px;margin-bottom:12px;text-decoration:none}
+.foot-logo-img{height:30px;width:auto;mix-blend-mode:screen}
+.foot-logo-text{font-size:11px;letter-spacing:3px;color:#fff;text-transform:uppercase;font-weight:300}
+.foot-logo-text span{color:var(--green-b)}
+.foot-tag{font-size:12px;color:rgba(0,200,150,.8);line-height:1.85;margin-bottom:18px}
+.foot-socials{display:flex;gap:8px}
+.soc{width:32px;height:32px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--dim);text-decoration:none;transition:border-color .25s,color .25s,background .25s}
+.soc:hover{border-color:var(--green);color:var(--green-b);background:rgba(0,200,150,.08)}
+.soc svg{width:13px;height:13px;fill:currentColor}
+.foot-col h4{font-size:8.5px;letter-spacing:3px;color:var(--green-b);margin-bottom:16px;text-transform:uppercase}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:9px}
+.foot-col a{font-size:12px;color:rgba(0,200,150,.8);text-decoration:none;letter-spacing:.5px;transition:color .25s}
+.foot-col a:hover{color:rgba(255,255,255,.75)}
+.foot-bottom{max-width:1180px;margin:0 auto;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.foot-copy{font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.5)}
+@media(max-width:760px){.foot-bottom{flex-direction:column;text-align:center}}
+
+/* ─── Chat panel ─── */
+#chat-panel{
+  position:fixed;bottom:104px;right:20px;width:300px;z-index:500;
+  background:rgba(4,14,10,.96);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;backdrop-filter:blur(20px);
+  box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 40px rgba(0,200,150,.12);
+  transform:translateY(12px) scale(.95);opacity:0;
+  transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .32s;pointer-events:none;
+}
+#chat-panel.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
+.chat-hdr{padding:13px 16px;background:rgba(0,200,150,.1);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.chat-av{width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:13px}
+.chat-nm{font-size:12px;font-weight:600;color:#fff}
+.chat-st{font-size:8.5px;color:var(--green-b);letter-spacing:1px}
+.chat-x{margin-left:auto;background:none;border:none;color:var(--dim);cursor:pointer;font-size:16px;line-height:1;padding:2px}
+#chat-msgs{height:200px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.msg{max-width:88%;padding:8px 12px;border-radius:10px;font-size:12px;line-height:1.6}
+.msg.bot{background:rgba(0,200,150,.12);border:1px solid rgba(0,200,150,.2);color:rgba(255,255,255,.82);align-self:flex-start;border-radius:10px 10px 10px 2px}
+.msg.usr{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.78);align-self:flex-end;border-radius:10px 10px 2px 10px}
+.chat-inp{display:flex;gap:6px;padding:8px;border-top:1px solid var(--border)}
+#cinput{flex:1;background:rgba(0,12,6,.5);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:#fff;font-family:inherit;font-size:12px;outline:none}
+#cinput:focus{border-color:var(--green)}
+#csend{width:30px;height:30px;background:var(--green);border:none;border-radius:7px;color:#04050a;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+
+/* ─── Float widgets ─── */
+#widgets{position:fixed;bottom:20px;right:20px;z-index:500;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#wa-btn{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.4);animation:waPulse 2.8s ease-in-out infinite;transition:transform .2s}
+#wa-btn:hover{transform:scale(1.1)}
+#wa-btn svg{width:22px;height:22px;fill:#fff}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.38)}50%{box-shadow:0 4px 28px rgba(37,211,102,.72),0 0 0 7px rgba(37,211,102,.08)}}
+#chat-btn{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--green),#006644);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,200,150,.45);animation:chatPulse 3s ease-in-out infinite;transition:transform .2s}
+#chat-btn:hover{transform:scale(1.1)}
+#chat-btn svg{width:22px;height:22px;fill:#fff}
+@keyframes chatPulse{0%,100%{box-shadow:0 4px 18px rgba(0,200,150,.45)}50%{box-shadow:0 4px 28px rgba(0,200,150,.82),0 0 0 7px rgba(0,200,150,.1)}}
+
+/* ─── Utilities ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+::selection{background:rgba(0,200,150,.28)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img class="nav-logo-img" id="nav-logo-img" src="Elyra Ai solution.png" alt="Elyra AI">
+    <div class="nav-logo-text">
+      <strong>Elyra AI</strong>
+      <span>Solutions</span>
+    </div>
+  </a>
+  <div class="nav-spacer"></div>
+  <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navl">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="login.html">Login</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Get Started</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-badge">Next-Gen AI Solutions</div>
+
+  <div id="hero-logo-wrap">
+    <div class="hero-logo-ring"></div>
+    <canvas id="hero-logo-canvas"></canvas>
+  </div>
+
+  <h1 class="hero-title">Building <em>Intelligent Systems</em><br>for the Modern Enterprise</h1>
+  <p class="hero-desc">From AI-powered CRM to adaptive LMS platforms — Elyra delivers end-to-end intelligent solutions that transform how businesses operate, compete, and grow.</p>
+
+  <div class="hero-btns">
+    <a href="#services" class="btn-solid">Explore Services</a>
+    <a href="#contact" class="btn-ghost">Get in Touch</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">50+</span><span class="hero-stat-lbl">Clients Served</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">6</span><span class="hero-stat-lbl">Core Solutions</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">99%</span><span class="hero-stat-lbl">Uptime SLA</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">24/7</span><span class="hero-stat-lbl">Support</span></div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="inner">
+    <p class="s-chip">Who We Are</p>
+    <h2 class="s-head">About <em>Elyra</em></h2>
+    <div class="s-rule"></div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>Elyra AI Solutions is a technology company building the next generation of AI-powered enterprise platforms. We combine deep machine learning expertise with practical business intelligence to deliver systems that make a measurable impact.</p>
+        <p>Our team of AI engineers, data scientists, and enterprise architects work alongside clients to design, build, and deploy intelligent software — from custom AI models to full-stack SaaS platforms.</p>
+        <p>Whether you're modernising legacy operations or building AI-native products from scratch, Elyra provides the intelligence infrastructure to move fast and stay ahead.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-n">50+</span><span class="stat-l">Clients Served</span></div>
+        <div class="stat-card"><span class="stat-n">6</span><span class="stat-l">Core Solutions</span></div>
+        <div class="stat-card"><span class="stat-n">99%</span><span class="stat-l">Uptime SLA</span></div>
+        <div class="stat-card"><span class="stat-n">24/7</span><span class="stat-l">Support</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AGENTS ══ -->
+<section id="agents">
+  <div class="inner">
+    <p class="s-chip">Powered by AI</p>
+    <h2 class="s-head">Our Elyra <em>Agents</em></h2>
+    <div class="s-rule"></div>
+    <div class="agents-grid">
+
+      <div class="agent-card">
+        <span class="agent-badge">Active</span>
+        <span class="agent-icon">🔍</span>
+        <div class="agent-label">Search Intelligence</div>
+        <h3 class="agent-name"><strong>SEO</strong> Agent</h3>
+        <p class="agent-desc">An autonomous AI agent that continuously audits your website, identifies ranking opportunities, and executes on-page optimisation — without manual intervention.</p>
+        <ul class="agent-features">
+          <li>Automated keyword research & gap analysis</li>
+          <li>Real-time on-page SEO fixes</li>
+          <li>Competitor monitoring & content suggestions</li>
+          <li>Monthly performance reports</li>
+        </ul>
+      </div>
+
+      <div class="agent-card">
+        <span class="agent-badge">Active</span>
+        <span class="agent-icon">🌐</span>
+        <div class="agent-label">Search + Answer Engine</div>
+        <h3 class="agent-name"><strong>SEO + AEO</strong> Agent</h3>
+        <p class="agent-desc">Combines traditional search optimisation with Answer Engine Optimisation — making your brand the source AI tools like ChatGPT, Perplexity, and Google SGE pull from.</p>
+        <ul class="agent-features">
+          <li>Full SEO agent capabilities included</li>
+          <li>Structured data & schema markup automation</li>
+          <li>AI-citation optimisation for LLM search</li>
+          <li>FAQ & featured snippet targeting</li>
+        </ul>
+      </div>
+
+      <div class="agent-card">
+        <span class="agent-badge">Active</span>
+        <span class="agent-icon">🎯</span>
+        <div class="agent-label">Sales Automation</div>
+        <h3 class="agent-name"><strong>Lead Nurturing</strong> Agent</h3>
+        <p class="agent-desc">An AI-driven pipeline agent that scores incoming leads, personalises follow-up sequences, and moves prospects through your funnel automatically — around the clock.</p>
+        <ul class="agent-features">
+          <li>AI lead scoring & qualification</li>
+          <li>Personalised email & message sequences</li>
+          <li>CRM integration & pipeline updates</li>
+          <li>Conversion tracking & drop-off alerts</li>
+        </ul>
+      </div>
+
+      <div class="agent-card">
+        <span class="agent-badge">Active</span>
+        <span class="agent-icon">🏗️</span>
+        <div class="agent-label">Autonomous Development</div>
+        <h3 class="agent-name"><strong>Website Building</strong> Agent</h3>
+        <p class="agent-desc">Describe your business and let the agent design, build, and deploy a fully functional website — from branding and layout to content and SEO — in hours, not weeks.</p>
+        <ul class="agent-features">
+          <li>AI-generated design & copywriting</li>
+          <li>Responsive, SEO-ready code output</li>
+          <li>Automatic deployment & hosting setup</li>
+          <li>Ongoing maintenance & update automation</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section id="services">
+  <div class="inner">
+    <p class="s-chip">What We Build</p>
+    <h2 class="s-head">Our <em>Solutions</em></h2>
+    <div class="s-rule"></div>
+    <div class="services-grid">
+      <div class="svc-card"><div class="svc-num">01</div><span class="svc-emoji">🤖</span><div class="svc-name">AI Solution</div><p class="svc-desc">Custom LLM integrations, predictive analytics pipelines, and intelligent automation tailored to your business workflow.</p><div class="svc-tags"><span class="svc-tag">LLM</span><span class="svc-tag">ML Ops</span><span class="svc-tag">NLP</span></div></div>
+      <div class="svc-card"><div class="svc-num">02</div><span class="svc-emoji">👥</span><div class="svc-name">CRM</div><p class="svc-desc">AI-enhanced customer relationship management — predict churn, automate follow-ups, and surface opportunities before they slip away.</p><div class="svc-tags"><span class="svc-tag">Pipeline</span><span class="svc-tag">AI Scoring</span><span class="svc-tag">Auto</span></div></div>
+      <div class="svc-card"><div class="svc-num">03</div><span class="svc-emoji">📚</span><div class="svc-name">LMS</div><p class="svc-desc">Adaptive learning management with AI-personalised content paths, learner analytics, and progress intelligence at scale.</p><div class="svc-tags"><span class="svc-tag">Adaptive</span><span class="svc-tag">Analytics</span><span class="svc-tag">Paths</span></div></div>
+      <div class="svc-card"><div class="svc-num">04</div><span class="svc-emoji">⚙️</span><div class="svc-name">ERP</div><p class="svc-desc">Enterprise resource planning reimagined with real-time AI decision support, automated reporting, and cross-department intelligence.</p><div class="svc-tags"><span class="svc-tag">Finance</span><span class="svc-tag">Inventory</span><span class="svc-tag">AI BI</span></div></div>
+      <div class="svc-card"><div class="svc-num">05</div><span class="svc-emoji">🌐</span><div class="svc-name">Web Development</div><p class="svc-desc">Performance-first web applications — AI-integrated SaaS products and high-conversion marketing platforms built for scale.</p><div class="svc-tags"><span class="svc-tag">3D UI</span><span class="svc-tag">SaaS</span><span class="svc-tag">Full-Stack</span></div></div>
+      <div class="svc-card"><div class="svc-num">06</div><span class="svc-emoji">🔍</span><div class="svc-name">SEO</div><p class="svc-desc">AI-driven search optimisation — semantic ranking strategies, automated audits, content intelligence, and competitor gap analysis.</p><div class="svc-tags"><span class="svc-tag">Semantic</span><span class="svc-tag">Audit</span><span class="svc-tag">Ranking</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VISION ══ -->
+<section id="vision">
+  <div class="inner">
+    <p class="s-chip">Where We're Going</p>
+    <h2 class="s-head">Our <em>Vision</em></h2>
+    <div class="s-rule"></div>
+    <div class="vision-grid">
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2023</div><div class="tl-head">Foundation</div><div class="tl-desc">Elyra AI was founded with a mission to make enterprise-grade AI accessible to every business, not just the Fortune 500.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2024</div><div class="tl-head">First Products</div><div class="tl-desc">Launched core CRM, LMS and AI Solution platforms. First 20 enterprise clients onboarded across 5 industry sectors.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-head">Enterprise Scale</div><div class="tl-desc">Full ERP and SEO intelligence suite live. Expanded team to 40+ engineers. Serving clients across South Asia and the Middle East.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2026</div><div class="tl-head">Global Expansion</div><div class="tl-desc">Opening operations in Europe and Southeast Asia. Launching Elyra Cloud — a unified AI platform for enterprise customers.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2027+</div><div class="tl-head">AGI-Ready Enterprise</div><div class="tl-desc">Building the intelligent enterprise of tomorrow — autonomous agents, real-time decision systems, and human-AI collaboration at scale.</div></div>
+      </div>
+      <canvas id="orb-canvas"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG PREVIEW ══ -->
+<section id="blog-preview">
+  <div class="inner">
+    <p class="s-chip">Latest Insights</p>
+    <h2 class="s-head">From the <em>Blog</em></h2>
+    <div class="s-rule"></div>
+    <div class="bp-grid" id="bp-grid">
+      <div style="grid-column:1/-1;text-align:center;padding:40px 0;color:rgba(255,255,255,.25);font-size:11px;letter-spacing:2px">Loading posts...</div>
+    </div>
+    <a href="blog.html" class="bp-more">View All Articles →</a>
+  </div>
+</section>
+
+<!-- ══ REVIEWS ══ -->
+<section id="reviews">
+  <div class="inner">
+    <p class="s-chip">What Clients Say</p>
+    <h2 class="s-head">Client <em>Reviews</em></h2>
+    <div class="s-rule"></div>
+    <div class="rev-wrap">
+      <div class="rev-track" id="revTrack">
+        <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">"Elyra's AI Solution transformed our operations completely. The LLM integration cut our manual processing time by 70% within the first month."</p><div class="rev-author"><div class="rev-av">AK</div><div><div class="rev-name">Arjun Krishnan</div><div class="rev-role">CTO · FinFlow Technologies</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">"The CRM platform they built for us is exceptional. AI-powered lead scoring alone doubled our conversion rate in Q2. Highly recommend Elyra."</p><div class="rev-author"><div class="rev-av">SP</div><div><div class="rev-name">Sarah Patel</div><div class="rev-role">Head of Sales · NovaBridge</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">"Our LMS rollout was seamless. Elyra's adaptive learning engine keeps engagement rates above 90% — something we never achieved with off-the-shelf tools."</p><div class="rev-author"><div class="rev-av">MR</div><div><div class="rev-name">Mohamed Rashid</div><div class="rev-role">Director · LearnPath Academy</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">"The ERP system Elyra delivered gave us real-time visibility across all departments. Our procurement cycle dropped from 14 days to 3."</p><div class="rev-author"><div class="rev-av">FN</div><div><div class="rev-name">Fatima Noor</div><div class="rev-role">COO · GulfTrade Group</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">"Their web development team built our SaaS platform from scratch in 8 weeks. The 3D UI and performance are beyond anything we expected."</p><div class="rev-author"><div class="rev-av">JL</div><div><div class="rev-name">James Liu</div><div class="rev-role">Founder · Stackflow</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">"Elyra's SEO team took us from page 4 to position 1 for our top keywords in 3 months. Their AI-driven content strategy is genuinely different."</p><div class="rev-author"><div class="rev-av">PV</div><div><div class="rev-name">Priya Varma</div><div class="rev-role">Marketing Lead · BrightReach</div></div></div></div>
+      </div>
+      <div class="carousel-btns">
+        <button class="cbtn" id="revPrev">‹</button>
+        <button class="cbtn" id="revNext">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSTAGRAM ══ -->
+<section id="instagram">
+  <div class="inner">
+    <p class="s-chip">Follow Us</p>
+    <h2 class="s-head">We're on <em>Instagram</em></h2>
+    <div class="s-rule"></div>
+    <div class="ig-grid">
+      <div class="ig-card"><div class="ig-inner"><span class="ig-emoji">🤖</span><div class="ig-overlay"></div></div><div class="ig-label">AI in the Wild</div></div>
+      <div class="ig-card"><div class="ig-inner"><span class="ig-emoji">📊</span><div class="ig-overlay"></div></div><div class="ig-label">Data Insights</div></div>
+      <div class="ig-card"><div class="ig-inner"><span class="ig-emoji">🌐</span><div class="ig-overlay"></div></div><div class="ig-label">Web Launches</div></div>
+      <div class="ig-card"><div class="ig-inner"><span class="ig-emoji">⚙️</span><div class="ig-overlay"></div></div><div class="ig-label">ERP Deep Dives</div></div>
+      <div class="ig-card"><div class="ig-inner"><span class="ig-emoji">🎓</span><div class="ig-overlay"></div></div><div class="ig-label">LMS Stories</div></div>
+      <div class="ig-card"><div class="ig-inner"><span class="ig-emoji">🚀</span><div class="ig-overlay"></div></div><div class="ig-label">Team Highlights</div></div>
+    </div>
+    <a href="https://www.instagram.com/_elyra.ai?igsh=dzZrc3V0bmZqb2l1" target="_blank" class="ig-follow">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      View All on Instagram →
+    </a>
+  </div>
+</section>
+
+<!-- ══ BLOG ══ -->
+<section id="blog-preview">
+  <div class="inner">
+    <p class="s-chip">Latest Insights</p>
+    <h2 class="s-head">From the <em>Blog</em></h2>
+    <div class="s-rule"></div>
+    <div class="blog-grid">
+      <div class="blog-card" onclick="location.href='blog.html'"><div class="blog-thumb">🧠</div><div class="blog-body"><div class="blog-cat">Artificial Intelligence</div><div class="blog-title">How LLMs Are Reshaping Enterprise Operations in 2025</div><p class="blog-exc">Large language models are no longer experimental — they're running core business processes. Here's how Elyra is leading that shift.</p><div class="blog-meta"><span>Jun 2025</span><span>5 min read</span></div></div></div>
+      <div class="blog-card" onclick="location.href='blog.html'"><div class="blog-thumb">⚙️</div><div class="blog-body"><div class="blog-cat">ERP Systems</div><div class="blog-title">Building AI-Native ERP: Lessons from 30+ Enterprise Deployments</div><p class="blog-exc">Traditional ERP systems are being replaced. We share what we've learned building intelligent ERP from the ground up for real businesses.</p><div class="blog-meta"><span>May 2025</span><span>7 min read</span></div></div></div>
+      <div class="blog-card" onclick="location.href='blog.html'"><div class="blog-thumb">🌐</div><div class="blog-body"><div class="blog-cat">Web Development</div><div class="blog-title">3D Web Design: Why the Future of UI Is Spatial</div><p class="blog-exc">Static websites are dead. We break down why immersive 3D web experiences are becoming the new standard for brand presence in 2025.</p><div class="blog-meta"><span>Apr 2025</span><span>4 min read</span></div></div></div>
+    </div>
+    <a href="blog.html" class="view-all">View All Articles →</a>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="inner">
+    <p class="s-chip">Get in Touch</p>
+    <h2 class="s-head">Let's Build <em>Together</em></h2>
+    <div class="s-rule"></div>
+    <div class="contact-grid">
+      <div>
+        <div class="ci-item"><div class="ci-ico">📍</div><div><div class="ci-lbl">Location</div><div class="ci-val">Elyra AI · Available Worldwide</div></div></div>
+        <div class="ci-item"><div class="ci-ico">✉️</div><div><div class="ci-lbl">Email</div><div class="ci-val">elyra.aisolutions@gmail.com</div></div></div>
+        <div class="ci-item"><div class="ci-ico">💬</div><div><div class="ci-lbl">WhatsApp</div><div class="ci-val">+91 70340 65755</div></div></div>
+        <div class="ci-item"><div class="ci-ico">🕐</div><div><div class="ci-lbl">Response Time</div><div class="ci-val">Within 24 hours guaranteed</div></div></div>
+      </div>
+      <form class="cform" id="cform">
+        <div class="frow">
+          <div class="fg"><label>Your Name</label><input type="text" placeholder="John Doe" required></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="you@company.com" required></div>
+        </div>
+        <div class="fg"><label>Service Interest</label>
+          <select><option value="">Select a service...</option><option>AI Solution</option><option>CRM Platform</option><option>LMS Platform</option><option>ERP System</option><option>Web Development</option><option>SEO Services</option><option>General Inquiry</option></select>
+        </div>
+        <div class="fg"><label>Message</label><textarea placeholder="Tell us about your project..." required></textarea></div>
+        <button type="submit" class="fsub">Send Message →</button>
+        <div class="fmsg" id="fmsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <a class="foot-logo-wrap" href="#hero">
+        <img class="foot-logo-img" src="Elyra Ai solution.png" alt="Elyra AI">
+        <span class="foot-logo-text">Elyra <span>AI</span> Solutions</span>
+      </a>
+      <p class="foot-tag">Building intelligent systems for the next generation of enterprise.<br>AI · CRM · LMS · ERP · Web Development · SEO.</p>
+      <div class="foot-socials">
+        <a href="#" class="soc"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" class="soc"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-col"><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#vision">Our Vision</a></li><li><a href="blog.html">Blog</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+    <div class="foot-col"><h4>Services</h4><ul><li><a href="#services">AI Solution</a></li><li><a href="#services">CRM Platform</a></li><li><a href="#services">LMS Platform</a></li><li><a href="#services">ERP System</a></li><li><a href="#services">Web Development</a></li><li><a href="#services">SEO</a></li></ul></div>
+    <div class="foot-col"><h4>Connect</h4><ul><li><a href="#contact">Contact Us</a></li><li><a href="#contact">Get a Quote</a></li><li><a href="#instagram">Instagram</a></li><li><a href="login.html">Staff Portal</a></li></ul></div>
+  </div>
+  <div class="foot-bottom">
+    <span class="foot-copy">© 2025 Elyra AI Solutions. All rights reserved.</span>
+    <span class="foot-copy">Intelligence · Innovation · Impact</span>
+  </div>
+</footer>
+
+<!-- ══ CHAT ══ -->
+<div id="chat-panel">
+  <div class="chat-hdr"><div class="chat-av">🤖</div><div><div class="chat-nm">Elyra AI</div><div class="chat-st">● Online</div></div><button class="chat-x" id="chat-x">✕</button></div>
+  <div id="chat-msgs"><div class="msg bot">Hi! I'm Elyra AI. Ask me about our services or how we can help your business. 🚀</div></div>
+  <div class="chat-inp"><input id="cinput" type="text" placeholder="Ask anything..."><button id="csend">➤</button></div>
+</div>
+
+<div id="widgets">
+  <button id="chat-btn"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg></button>
+  <a id="wa-btn" href="https://wa.me/917034065755" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</div>
+
+<script>
+/* ── Page fade-in (smooth entry from intro) ── */
+(function(){
+  const v=document.createElement('div');
+  v.style.cssText='position:fixed;inset:0;background:#04050a;opacity:1;z-index:9999;pointer-events:none;transition:opacity 1s ease;';
+  document.body.appendChild(v);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{v.style.opacity='0';}));
+  setTimeout(()=>v.remove(),1100);
+})();
+
+/* ── Logo-echo background: eye shapes, iris rings, circuit traces ── */
+(function(){
+  const cv=document.getElementById('bg-canvas');
+  const cx=cv.getContext('2d');
+  let W,H;
+  function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+
+  /* Draw one eye — same geometry as the Elyra logo */
+  function drawEye(x,y,size,alpha,rot,ph){
+    cx.save();cx.translate(x,y);cx.rotate(rot);
+    const hw=size/2, hh=size*0.22;
+    /* outer eye (vesica piscis) */
+    cx.beginPath();
+    cx.moveTo(-hw,0);
+    cx.quadraticCurveTo(0,-hh*2.1,hw,0);
+    cx.quadraticCurveTo(0,hh*2.1,-hw,0);
+    cx.strokeStyle=`rgba(0,200,150,${alpha*.55})`;cx.lineWidth=1.1;cx.stroke();
+    /* iris rings */
+    const iR=hh*.88;
+    for(let i=0;i<3;i++){
+      const r=iR*(i===0?.28:i===1?.6:1);
+      cx.beginPath();cx.arc(0,0,r,0,Math.PI*2);
+      cx.strokeStyle=`rgba(0,200,150,${alpha*(i===0?.55:i===1?.38:.22)})`;
+      cx.lineWidth=i===0?.8:.55;cx.stroke();
+    }
+    /* pupil glow */
+    const pA=alpha*(.45+.3*Math.sin(ph));
+    const pg=cx.createRadialGradient(0,0,0,0,0,iR*.22);
+    pg.addColorStop(0,`rgba(0,230,118,${pA})`);pg.addColorStop(1,'rgba(0,230,118,0)');
+    cx.beginPath();cx.arc(0,0,iR*.22,0,Math.PI*2);cx.fillStyle=pg;cx.fill();
+    /* circuit traces on both sides */
+    const tX=hw*.52, tLen=size*.14;
+    [-hh*.55,-hh*.2,hh*.2,hh*.55].forEach(ty=>{
+      [-1,1].forEach(side=>{
+        const ox=side*tX;
+        cx.beginPath();cx.moveTo(ox,ty);cx.lineTo(ox+side*tLen,ty);
+        cx.strokeStyle=`rgba(0,200,150,${alpha*.45})`;cx.lineWidth=.7;cx.stroke();
+        /* corner bend */
+        cx.beginPath();cx.moveTo(ox+side*tLen,ty);cx.lineTo(ox+side*tLen,ty+(ty<0?-hh*.12:hh*.12));
+        cx.stroke();
+        /* end node */
+        cx.beginPath();cx.arc(ox+side*tLen,ty+(ty<0?-hh*.12:hh*.12),1.4,0,Math.PI*2);
+        cx.fillStyle=`rgba(0,230,118,${alpha*.65})`;cx.fill();
+      });
+    });
+    /* scan line sweeping across eye */
+    const scanY=hh*.75*Math.sin(ph*.7);
+    const clampX=hw*.82*Math.sqrt(Math.max(0,1-(scanY/(hh*1.05))*(scanY/(hh*1.05))));
+    cx.beginPath();cx.moveTo(-clampX,scanY);cx.lineTo(clampX,scanY);
+    cx.strokeStyle=`rgba(0,230,118,${alpha*.3*(0.5+0.5*Math.cos(ph*.7))})`;cx.lineWidth=.8;cx.stroke();
+    cx.restore();
+  }
+
+  /* Eye instances: xr,yr = fraction of W,H; sizer = fraction of min(W,H) */
+  const EYES=[
+    {xr:.5, yr:.38,sizer:.52,baseA:.13,rot:0,rotSpd:.00008,ph:0,phSpd:.009},
+    {xr:.1, yr:.18,sizer:.2, baseA:.08,rot:.15,rotSpd:-.00012,ph:2,phSpd:.011},
+    {xr:.9, yr:.78,sizer:.18,baseA:.07,rot:-.1,rotSpd:.00015,ph:1,phSpd:.010},
+    {xr:.85,yr:.12,sizer:.13,baseA:.06,rot:.08,rotSpd:-.0001,ph:3.5,phSpd:.013},
+    {xr:.15,yr:.88,sizer:.12,baseA:.05,rot:-.05,rotSpd:.00013,ph:5,phSpd:.012},
+  ];
+
+  /* Floating particles that drift upward */
+  let PARTS=[];
+  function buildParts(){
+    PARTS=Array.from({length:55},()=>({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.18, vy:-(Math.random()*.35+.08),
+      r:Math.random()*1.1+.25,
+      ph:Math.random()*Math.PI*2, ps:.018+Math.random()*.022,
+      green:Math.random()>.7
+    }));
+  }
+  buildParts();
+  window.addEventListener('resize',buildParts);
+
+  let tick=0;
+  function frame(){
+    cx.clearRect(0,0,W,H);
+    /* soft green center glow */
+    const rg=cx.createRadialGradient(W/2,H*.38,0,W/2,H*.38,W*.6);
+    rg.addColorStop(0,'rgba(0,55,26,.11)');rg.addColorStop(.7,'rgba(0,18,8,.04)');rg.addColorStop(1,'transparent');
+    cx.fillStyle=rg;cx.fillRect(0,0,W,H);
+    tick++;
+
+    /* slow rotating light rays from logo center */
+    const rx=W/2, ry=H*.38, rayRot=tick*.00025;
+    for(let i=0;i<6;i++){
+      const ang=rayRot+(i/6)*Math.PI*2;
+      const len=Math.min(W,H)*.72;
+      const ex=rx+Math.cos(ang)*len, ey=ry+Math.sin(ang)*len;
+      const spread=len*.06;
+      const px=-Math.sin(ang)*spread, py=Math.cos(ang)*spread;
+      cx.beginPath();
+      cx.moveTo(rx,ry);
+      cx.lineTo(ex+px,ey+py);
+      cx.lineTo(ex-px,ey-py);
+      cx.closePath();
+      const rg2=cx.createLinearGradient(rx,ry,ex,ey);
+      rg2.addColorStop(0,`rgba(0,200,150,.055)`);
+      rg2.addColorStop(.4,`rgba(0,200,150,.018)`);
+      rg2.addColorStop(1,'rgba(0,200,150,0)');
+      cx.fillStyle=rg2;cx.fill();
+    }
+
+    /* eye shapes */
+    EYES.forEach(e=>{
+      e.ph+=e.phSpd; e.rot+=e.rotSpd;
+      drawEye(e.xr*W,e.yr*H,e.sizer*Math.min(W,H),e.baseA*(.75+.25*Math.sin(e.ph*.4)),e.rot,e.ph);
+    });
+
+    /* drifting particles */
+    PARTS.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy; p.ph+=p.ps;
+      if(p.y<-4){p.y=H+4;p.x=Math.random()*W;}
+      const a=(p.green?.18:.1)*(.5+.5*Math.sin(p.ph));
+      cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      cx.fillStyle=p.green?`rgba(0,230,118,${a})`:`rgba(0,200,150,${a})`;cx.fill();
+    });
+
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+/* ── Hero logo (bg removal, same technique as intro) ── */
+(function(){
+  const lc=document.getElementById('hero-logo-canvas');
+  const lctx=lc.getContext('2d');
+  const img=new Image();
+  img.src='Elyra Ai solution.png';
+  img.onload=function(){
+    lc.width=img.naturalWidth;lc.height=img.naturalHeight;
+    lctx.drawImage(img,0,0);
+    const id=lctx.getImageData(0,0,lc.width,lc.height);
+    const px=id.data,w=lc.width,h=lc.height;
+    function s3(x,y){const i=(y*w+x)*4;return[px[i],px[i+1],px[i+2]]}
+    const corners=[s3(0,0),s3(w-1,0),s3(0,h-1),s3(w-1,h-1)];
+    const bgR=Math.round(corners.reduce((s,c)=>s+c[0],0)/4);
+    const bgG=Math.round(corners.reduce((s,c)=>s+c[1],0)/4);
+    const bgB=Math.round(corners.reduce((s,c)=>s+c[2],0)/4);
+    const tol=40,fade=30;
+    for(let i=0;i<px.length;i+=4){const dr=px[i]-bgR,dg=px[i+1]-bgG,db=px[i+2]-bgB;const d=Math.sqrt(dr*dr+dg*dg+db*db);if(d<tol)px[i+3]=0;else if(d<tol+fade)px[i+3]=Math.round(((d-tol)/fade)*255)}
+    lctx.putImageData(id,0,0);
+  };
+})();
+
+/* ── Section reveal ── */
+let orbActive=false,orbT=0;
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('sec-visible');
+      if(e.target.id==='vision'&&!orbActive){orbActive=true;animateOrb()}
+    }
+  });
+},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('section').forEach(s=>io.observe(s));
+
+/* ── Milky Way galaxy ── */
+const oc=document.getElementById('orb-canvas');
+const octx=oc.getContext('2d');
+let galaxyPts=null;
+function buildGalaxy(maxR){
+  const pts=[];
+  const ARMS=2,PPA=520,CORE=280;
+  for(let a=0;a<ARMS;a++){
+    const armOff=(a/ARMS)*Math.PI*2;
+    for(let i=0;i<PPA;i++){
+      const t=i/PPA,ang=t*Math.PI*3.1+armOff,rad=(0.04+t)*maxR;
+      const spread=maxR*0.068*(0.2+t*1.1);
+      const jx=(Math.random()+Math.random()-1)*spread,jy=(Math.random()+Math.random()-1)*spread*.32;
+      const bright=Math.random();
+      pts.push({lx:Math.cos(ang)*rad+jx,ly:Math.sin(ang)*rad*.42+jy,baseR:rad,baseAng:ang,sz:t<.08?.9+Math.random()*.55:.15+Math.random()*.28,a:t<.06?.82+Math.random()*.15:Math.max(.04,.58-t*.44+Math.random()*.16),col:bright>.72?0:bright>.45?1:2});
+    }
+  }
+  for(let i=0;i<CORE;i++){const ang=Math.random()*Math.PI*2,rad=Math.pow(Math.random(),2.2)*maxR*.14;pts.push({lx:Math.cos(ang)*rad,ly:Math.sin(ang)*rad*.42,baseR:rad,baseAng:ang,sz:.3+Math.random()*.7,a:.5+Math.random()*.45,col:0})}
+  return pts;
+}
+function animateOrb(){
+  if(!orbActive)return;
+  const rect=oc.getBoundingClientRect();
+  const W=oc.width=rect.width||320,H=oc.height=rect.height||320;
+  const cx2=W/2,cy2=H/2,maxR=Math.min(W,H)*.44;
+  if(!galaxyPts)galaxyPts=buildGalaxy(maxR);
+  octx.clearRect(0,0,W,H);
+  const ng=octx.createRadialGradient(cx2,cy2,0,cx2,cy2,maxR*.75);
+  ng.addColorStop(0,'rgba(0,50,30,.18)');ng.addColorStop(.4,'rgba(0,30,18,.10)');ng.addColorStop(1,'transparent');
+  octx.fillStyle=ng;octx.fillRect(0,0,W,H);
+  const rot=orbT*.006;
+  const COLS=['rgba(240,252,248,','rgba(0,210,155,','rgba(0,240,120,'];
+  galaxyPts.forEach(p=>{const ang=p.baseAng+rot;const px=cx2+Math.cos(ang)*p.baseR;const py=cy2+Math.sin(ang)*p.baseR*.42;if(px<-2||px>W+2||py<-2||py>H+2)return;octx.beginPath();octx.arc(px,py,p.sz,0,Math.PI*2);octx.fillStyle=COLS[p.col]+p.a+')';octx.fill()});
+  const cg=octx.createRadialGradient(cx2,cy2,0,cx2,cy2,maxR*.10);cg.addColorStop(0,'rgba(255,254,230,.96)');cg.addColorStop(.12,'rgba(200,255,220,.65)');cg.addColorStop(.35,'rgba(0,200,140,.22)');cg.addColorStop(1,'transparent');octx.fillStyle=cg;octx.fillRect(cx2-maxR*.12,cy2-maxR*.12,maxR*.24,maxR*.24);
+  const hg=octx.createRadialGradient(cx2,cy2,maxR*.18,cx2,cy2,maxR*.6);hg.addColorStop(0,'rgba(0,200,140,.055)');hg.addColorStop(1,'transparent');octx.fillStyle=hg;octx.fillRect(0,0,W,H);
+  orbT++;requestAnimationFrame(animateOrb);
+}
+
+/* ── Reviews carousel ── */
+(()=>{
+  const track=document.getElementById('revTrack');
+  if(!track)return;
+  const cards=track.querySelectorAll('.rev-card');
+  let idx=0;
+  const gap=18;
+  function cardW(){return cards[0].getBoundingClientRect().width+gap}
+  function visible(){return Math.max(1,Math.floor((track.parentElement.offsetWidth+gap)/(cardW())))}
+  function move(){const max=Math.max(0,cards.length-visible());idx=Math.min(idx,max);track.style.transform=`translateX(-${idx*cardW()}px)`}
+  document.getElementById('revPrev').addEventListener('click',()=>{idx=Math.max(0,idx-1);move()});
+  document.getElementById('revNext').addEventListener('click',()=>{const max=Math.max(0,cards.length-visible());idx=Math.min(max,idx+1);move()});
+  window.addEventListener('resize',()=>{idx=0;move()});
+})();
+
+/* ── Hamburger ── */
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('navl').classList.toggle('open'));
+
+/* ── Chat ── */
+const panel=document.getElementById('chat-panel');
+document.getElementById('chat-btn').addEventListener('click',()=>panel.classList.toggle('open'));
+document.getElementById('chat-x').addEventListener('click',()=>panel.classList.remove('open'));
+const replies=['Thanks for reaching out! Our team will get back to you within 24 hours.','We specialise in AI-powered enterprise platforms — CRM, LMS, ERP and custom AI solutions.','Tell us more about your project and we\'ll tailor a solution just for you.','Fill out the contact form below and our team will reach out with a custom proposal.'];
+function addMsg(t,tp){const d=document.createElement('div');d.className=`msg ${tp}`;d.textContent=t;const m=document.getElementById('chat-msgs');m.appendChild(d);m.scrollTop=m.scrollHeight}
+function sendChat(){const v=document.getElementById('cinput').value.trim();if(!v)return;addMsg(v,'usr');document.getElementById('cinput').value='';setTimeout(()=>addMsg(replies[Math.floor(Math.random()*replies.length)],'bot'),820)}
+document.getElementById('csend').addEventListener('click',sendChat);
+document.getElementById('cinput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat()});
+
+/* ── Blog preview ── */
+(async function(){
+  const grid = document.getElementById('bp-grid');
+  try {
+    const res = await fetch('/api/blogs?limit=3');
+    const { blogs } = await res.json();
+    if (!blogs || blogs.length === 0) { grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px 0;color:rgba(255,255,255,.25);font-size:11px;letter-spacing:2px">No posts yet.</div>'; return; }
+    grid.innerHTML = '';
+    blogs.forEach(b => {
+      const date = new Date(b.publishedAt).toLocaleDateString('en-GB',{month:'short',year:'numeric'});
+      const a = document.createElement('a');
+      a.className = 'bp-card'; a.href = 'blog.html';
+      a.innerHTML = `<div class="bp-thumb"><span style="position:relative;z-index:1">${b.emoji||'🧠'}</span></div>
+        <div class="bp-body">
+          <div class="bp-cat">${b.category}</div>
+          <div class="bp-title">${b.title}</div>
+          <p class="bp-excerpt">${b.excerpt}</p>
+          <div class="bp-meta"><span>${date}</span><span>${b.readTime}</span></div>
+        </div>`;
+      grid.appendChild(a);
+    });
+  } catch(e) { grid.innerHTML = ''; }
+})();
+
+/* ── Contact form ── */
+document.getElementById('cform').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.fsub');
+  const msg = document.getElementById('fmsg');
+  const inputs = this.querySelectorAll('input,select,textarea');
+  const name    = inputs[0].value.trim();
+  const email   = inputs[1].value.trim();
+  const service = inputs[2].value;
+  const message = inputs[3].value.trim();
+  if (!name || !email || !message) { msg.style.color='#ff5252'; msg.textContent='Please fill in all required fields.'; return; }
+  btn.textContent = 'Sending...'; btn.disabled = true; msg.textContent = '';
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, service, message })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Failed');
+    msg.style.color = 'var(--green-b)';
+    msg.textContent = '✓ Message sent! We\'ll be in touch within 24 hours.';
+    this.reset();
+    setTimeout(() => msg.textContent = '', 6000);
+  } catch(err) {
+    msg.style.color = '#ff5252';
+    msg.textContent = err.message || 'Could not send. Please try again.';
+  } finally {
+    btn.textContent = 'Send Message →'; btn.disabled = false;
+  }
+});
+
+/* ── Service card radial highlight ── */
+document.querySelectorAll('.svc-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+});
+</script>
+</body>
+</html>

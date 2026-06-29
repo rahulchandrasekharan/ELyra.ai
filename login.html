@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Login — Elyra AI Solutions</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Staff Portal — Elyra AI Solutions">
+<meta property="og:description" content="Secure staff login for Elyra AI Solutions admin portal.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#04050a;--green:#00c896;--green-bright:#00e676;--dim:rgba(0,200,150,.45);--border:rgba(0,200,150,.14);--glass:rgba(4,14,10,.78)}
+body{background:var(--bg);color:rgba(255,255,255,.88);font-family:'Segoe UI',Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+#bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+.login-wrap{position:relative;z-index:2;width:100%;max-width:420px;padding:20px}
+
+.login-logo{text-align:center;margin-bottom:40px}
+.login-logo a{font-size:13px;letter-spacing:5px;text-transform:uppercase;color:#fff;text-decoration:none;font-weight:300}
+.login-logo a span{color:var(--green-bright)}
+.login-logo p{font-size:9px;letter-spacing:3px;color:var(--dim);margin-top:8px;text-transform:uppercase}
+
+.login-card{background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:40px 36px;backdrop-filter:blur(16px)}
+.login-title{font-size:20px;font-weight:200;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;text-align:center}
+.login-sub{font-size:10px;letter-spacing:2px;color:var(--dim);text-align:center;margin-bottom:32px;text-transform:uppercase}
+
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:7px}
+.fg input{width:100%;background:rgba(4,14,10,.6);border:1px solid var(--border);border-radius:6px;padding:12px 14px;color:#fff;font-family:inherit;font-size:13px;outline:none;transition:border-color .25s,box-shadow .25s}
+.fg input:focus{border-color:var(--green);box-shadow:0 0 10px rgba(0,200,150,.2)}
+
+.login-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.remember{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--dim);cursor:pointer}
+.remember input{width:14px;height:14px;accent-color:var(--green);cursor:pointer}
+.forgot{font-size:11px;color:var(--green);text-decoration:none;letter-spacing:.5px;transition:color .25s}
+.forgot:hover{color:var(--green-bright)}
+
+.login-btn{width:100%;padding:14px;background:var(--green);border:none;border-radius:6px;color:#04050a;font-family:inherit;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .25s,box-shadow .25s;box-shadow:0 0 20px rgba(0,200,150,.3)}
+.login-btn:hover{background:var(--green-bright);box-shadow:0 0 32px rgba(0,230,118,.5)}
+
+.login-divider{display:flex;align-items:center;gap:12px;margin:24px 0;color:rgba(255,255,255,.15);font-size:10px;letter-spacing:2px}
+.login-divider::before,.login-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.login-err{display:none;margin-top:14px;padding:10px 14px;background:rgba(255,60,60,.08);border:1px solid rgba(255,60,60,.22);border-radius:6px;font-size:11px;color:rgba(255,120,120,.85);letter-spacing:.5px;text-align:center}
+.login-err.show{display:block}
+
+.back-link{text-align:center;margin-top:28px;font-size:10px;letter-spacing:2px;color:var(--dim)}
+.back-link a{color:var(--green);text-decoration:none;transition:color .25s}
+.back-link a:hover{color:var(--green-bright)}
+
+/* corner decorations */
+.corner{position:fixed;width:28px;height:28px;opacity:.25;z-index:1}
+.c-tl{top:20px;left:20px;border-top:1px solid var(--green);border-left:1px solid var(--green)}
+.c-tr{top:20px;right:20px;border-top:1px solid var(--green);border-right:1px solid var(--green)}
+.c-bl{bottom:20px;left:20px;border-bottom:1px solid var(--green);border-left:1px solid var(--green)}
+.c-br{bottom:20px;right:20px;border-bottom:1px solid var(--green);border-right:1px solid var(--green)}
+
+::selection{background:rgba(0,200,150,.3)}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="corner c-tl"></div>
+<div class="corner c-tr"></div>
+<div class="corner c-bl"></div>
+<div class="corner c-br"></div>
+
+<div class="login-wrap">
+  <div class="login-logo">
+    <a href="main.html">Elyra <span>AI</span> Solutions</a>
+    <p>Staff Portal</p>
+  </div>
+
+  <div class="login-card">
+    <h1 class="login-title">Welcome Back</h1>
+    <p class="login-sub">Sign in to your account</p>
+
+    <form id="lform">
+      <div class="fg">
+        <label>Email Address</label>
+        <input type="email" id="lemail" placeholder="you@elyraai.com" required autocomplete="username">
+      </div>
+      <div class="fg">
+        <label>Password</label>
+        <input type="password" id="lpass" placeholder="••••••••" required autocomplete="current-password">
+      </div>
+      <div class="login-row">
+        <label class="remember"><input type="checkbox"> Remember me</label>
+        <a class="forgot" href="#">Forgot password?</a>
+      </div>
+      <button type="submit" class="login-btn" id="lbtn">Sign In →</button>
+      <div class="login-err" id="lerr">Invalid email or password. Please try again.</div>
+    </form>
+
+    <div class="login-divider">or</div>
+    <p style="text-align:center;font-size:11px;color:var(--dim);letter-spacing:1px">Contact your administrator for access</p>
+  </div>
+
+  <p class="back-link"><a href="main.html">← Back to Website</a></p>
+</div>
+
+<script>
+(function(){
+  const cv=document.getElementById('bg-canvas');
+  const cx=cv.getContext('2d');
+  let W,H;
+  function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  function drawEye(x,y,size,alpha,rot,ph){
+    cx.save();cx.translate(x,y);cx.rotate(rot);
+    const hw=size/2,hh=size*.22;
+    cx.beginPath();cx.moveTo(-hw,0);cx.quadraticCurveTo(0,-hh*2.1,hw,0);cx.quadraticCurveTo(0,hh*2.1,-hw,0);
+    cx.strokeStyle=`rgba(0,200,150,${alpha*.55})`;cx.lineWidth=1.1;cx.stroke();
+    const iR=hh*.88;
+    [.28,.6,1].forEach((f,i)=>{cx.beginPath();cx.arc(0,0,iR*f,0,Math.PI*2);cx.strokeStyle=`rgba(0,200,150,${alpha*[.55,.38,.22][i]})`;cx.lineWidth=i===0?.8:.55;cx.stroke();});
+    const pg=cx.createRadialGradient(0,0,0,0,0,iR*.22);
+    pg.addColorStop(0,`rgba(0,230,118,${alpha*(.45+.3*Math.sin(ph))})`);pg.addColorStop(1,'rgba(0,230,118,0)');
+    cx.beginPath();cx.arc(0,0,iR*.22,0,Math.PI*2);cx.fillStyle=pg;cx.fill();
+    const tX=hw*.52,tLen=size*.14;
+    [-hh*.55,-hh*.2,hh*.2,hh*.55].forEach(ty=>[-1,1].forEach(side=>{
+      const ox=side*tX,bend=ty<0?-hh*.12:hh*.12;
+      cx.beginPath();cx.moveTo(ox,ty);cx.lineTo(ox+side*tLen,ty);cx.strokeStyle=`rgba(0,200,150,${alpha*.45})`;cx.lineWidth=.7;cx.stroke();
+      cx.beginPath();cx.moveTo(ox+side*tLen,ty);cx.lineTo(ox+side*tLen,ty+bend);cx.stroke();
+      cx.beginPath();cx.arc(ox+side*tLen,ty+bend,1.4,0,Math.PI*2);cx.fillStyle=`rgba(0,230,118,${alpha*.65})`;cx.fill();
+    }));
+    const scanY=hh*.75*Math.sin(ph*.7);
+    const clampX=hw*.82*Math.sqrt(Math.max(0,1-(scanY/(hh*1.05))**2));
+    cx.beginPath();cx.moveTo(-clampX,scanY);cx.lineTo(clampX,scanY);
+    cx.strokeStyle=`rgba(0,230,118,${alpha*.3*(.5+.5*Math.cos(ph*.7))})`;cx.lineWidth=.8;cx.stroke();
+    cx.restore();
+  }
+  const EYES=[
+    {xr:.5,yr:.5,sizer:.55,baseA:.13,rot:0,rotSpd:.00008,ph:0,phSpd:.009},
+    {xr:.08,yr:.15,sizer:.2,baseA:.08,rot:.15,rotSpd:-.00012,ph:2,phSpd:.011},
+    {xr:.92,yr:.82,sizer:.18,baseA:.07,rot:-.1,rotSpd:.00015,ph:1,phSpd:.010},
+    {xr:.88,yr:.1,sizer:.12,baseA:.05,rot:.08,rotSpd:-.0001,ph:3.5,phSpd:.013},
+    {xr:.12,yr:.9,sizer:.11,baseA:.04,rot:-.05,rotSpd:.00013,ph:5,phSpd:.012},
+  ];
+  let PARTS=[];
+  function buildParts(){PARTS=Array.from({length:55},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.18,vy:-(Math.random()*.35+.08),r:Math.random()*1.1+.25,ph:Math.random()*Math.PI*2,ps:.018+Math.random()*.022,green:Math.random()>.7}));}
+  buildParts();window.addEventListener('resize',buildParts);
+  let tick=0;
+  function frame(){
+    cx.clearRect(0,0,W,H);
+    const rg=cx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*.6);
+    rg.addColorStop(0,'rgba(0,55,26,.11)');rg.addColorStop(.7,'rgba(0,18,8,.04)');rg.addColorStop(1,'transparent');
+    cx.fillStyle=rg;cx.fillRect(0,0,W,H);
+    tick++;
+    const rx=W/2,ry=H/2,rayRot=tick*.00025;
+    for(let i=0;i<6;i++){const ang=rayRot+(i/6)*Math.PI*2;const len=Math.min(W,H)*.72;const ex=rx+Math.cos(ang)*len,ey=ry+Math.sin(ang)*len;const spread=len*.06;const px=-Math.sin(ang)*spread,py=Math.cos(ang)*spread;cx.beginPath();cx.moveTo(rx,ry);cx.lineTo(ex+px,ey+py);cx.lineTo(ex-px,ey-py);cx.closePath();const rg2=cx.createLinearGradient(rx,ry,ex,ey);rg2.addColorStop(0,'rgba(0,200,150,.055)');rg2.addColorStop(.4,'rgba(0,200,150,.018)');rg2.addColorStop(1,'rgba(0,200,150,0)');cx.fillStyle=rg2;cx.fill();}
+    EYES.forEach(e=>{e.ph+=e.phSpd;e.rot+=e.rotSpd;drawEye(e.xr*W,e.yr*H,e.sizer*Math.min(W,H),e.baseA*(.75+.25*Math.sin(e.ph*.4)),e.rot,e.ph);});
+    PARTS.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.ph+=p.ps;if(p.y<-4){p.y=H+4;p.x=Math.random()*W;}const a=(p.green?.18:.1)*(.5+.5*Math.sin(p.ph));cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.green?`rgba(0,230,118,${a})`:`rgba(0,200,150,${a})`;cx.fill();});
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+document.getElementById('lform').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const btn=document.getElementById('lbtn');
+  const err=document.getElementById('lerr');
+  btn.textContent='Signing in...';btn.disabled=true;
+  try {
+    const res=await fetch('/api/auth/login',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        email:document.getElementById('lemail').value,
+        password:document.getElementById('lpass').value
+      })
+    });
+    const data=await res.json();
+    if(!res.ok) throw new Error(data.error||'Login failed');
+    localStorage.setItem('elyra_token',data.token);
+    window.location.href='dashboard/index.html';
+  } catch(ex){
+    btn.textContent='Sign In →';btn.disabled=false;
+    err.textContent=ex.message||'Invalid email or password.';
+    err.classList.add('show');
+    setTimeout(()=>err.classList.remove('show'),4000);
+  }
+});
+</script>
+</body>
+</html>

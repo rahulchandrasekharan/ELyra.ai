@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elyra AI Solutions — Intelligence · Innovation · Impact</title>
+    <meta name="description" content="Elyra AI Solutions — Enterprise AI software for CRM, LMS, ERP, SEO and web development. Powered by intelligence.">
+    <meta name="keywords" content="Elyra AI, enterprise AI, AI solutions, CRM, LMS, ERP, SEO, web development">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Elyra AI Solutions — Intelligence · Innovation · Impact">
+    <meta property="og:description" content="Enterprise AI software built to scale your business with intelligent automation.">
+    <meta property="og:image" content="/Elyra Ai solution.png">
+    <meta property="og:url" content="https://elyraai.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://elyraai.com">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #04050a;
+            overflow: hidden;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        #stars { position: fixed; inset: 0; z-index: 0; }
+
+        /* ── Loader ── */
+        #loader {
+            position: fixed; inset: 0; z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 1;
+            transition: opacity 0.9s ease;
+        }
+        #loader.out { opacity: 0; pointer-events: none; }
+
+        /* Segmented loader track */
+        .loader-track {
+            display: flex;
+            align-items: center;
+            width: 80vw;
+            max-width: 760px;
+            min-width: 300px;
+        }
+        .start-dot {
+            position: relative;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #00e676;
+            box-shadow: 0 0 8px #00e676, 0 0 20px rgba(0,230,118,0.6);
+            flex-shrink: 0;
+            opacity: 0;
+            transform: scale(0);
+            animation:
+                dotPop  0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards,
+                dotGlow 2s ease-in-out 1s infinite;
+        }
+        @keyframes dotPop {
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes dotGlow {
+            0%, 100% { box-shadow: 0 0 8px #00e676, 0 0 18px rgba(0,230,118,0.5); }
+            50%       { box-shadow: 0 0 14px #00e676, 0 0 34px rgba(0,230,118,0.9); }
+        }
+        @keyframes dotRing {
+            0%   { transform: scale(1);   opacity: 0.7; }
+            100% { transform: scale(3.5); opacity: 0; }
+        }
+
+        .end-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #00e676;
+            box-shadow: 0 0 8px #00e676, 0 0 20px rgba(0,230,118,0.6);
+            flex-shrink: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .end-dot.visible { opacity: 1; }
+
+        .seg {
+            flex: 1;
+            height: 1px;
+            background: #00e676;
+            box-shadow: 0 0 8px rgba(0,230,118,0.7), 0 0 20px rgba(0,230,118,0.2);
+            clip-path: inset(0 100% 0 0);
+        }
+        .word {
+            font-size: 8.5px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: lowercase;
+            color: rgba(0, 230, 118, 0.9);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 0 12px;
+            flex-shrink: 0;
+        }
+        .word.visible { opacity: 1; }
+
+        /* ── Logo ── */
+        #logo-wrap {
+            position: fixed; inset: 0; z-index: 20;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+        }
+
+        .logo-img {
+            width: min(420px, 72vw);
+            transform: scale(0.88);
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            filter:
+                drop-shadow(0 0 24px rgba(0,230,118,0.45))
+                drop-shadow(0 0 60px rgba(0,230,118,0.16));
+            image-rendering: auto;
+        }
+        .logo-img.in { transform: scale(1); }
+
+        /* ── Main site ── */
+        #main-site {
+            position: fixed; inset: 0; z-index: 5;
+            background: #04050a; opacity: 0;
+            transition: opacity 1.5s ease;
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.08);
+            font-size: 12px; letter-spacing: 5px;
+        }
+        #main-site.in { opacity: 1; }
+    </style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<div id="loader">
+    <!-- • intelligence — seg1 — innovation — seg2 — impact • -->
+    <div class="loader-track">
+        <div class="start-dot"></div>
+        <span class="word" id="w1">intelligence</span>
+        <div class="seg" id="seg1"></div>
+        <span class="word" id="w2">innovation</span>
+        <div class="seg" id="seg2"></div>
+        <span class="word" id="w3">impact</span>
+        <div class="end-dot" id="endDot"></div>
+    </div>
+</div>
+
+<!-- Logo — real image with canvas background removal -->
+<div id="logo-wrap">
+    <canvas id="logo-canvas" class="logo-img"></canvas>
+</div>
+
+<div id="main-site">ELYRA AI SOLUTIONS</div>
+
+<script>
+// ── Stars ──
+const sc = document.getElementById('stars');
+const sCtx = sc.getContext('2d');
+sc.width = window.innerWidth;
+sc.height = window.innerHeight;
+const STARS = Array.from({ length: 240 }, () => ({
+    x: Math.random() * sc.width,
+    y: Math.random() * sc.height,
+    r: Math.random() * 1.25 + 0.15,
+    a: Math.random() * 0.7 + 0.1,
+    dir: Math.random() > 0.5 ? 1 : -1,
+    spd: Math.random() * 0.004 + 0.002,
+    green: Math.random() < 0.065
+}));
+const shoots = [];
+function spawnShoot() {
+    shoots.push({ x: Math.random()*sc.width*0.65+sc.width*0.08, y: Math.random()*sc.height*0.45, len: Math.random()*80+45, spd: Math.random()*4.5+4, a: 1 });
+    setTimeout(spawnShoot, Math.random()*5000+3000);
+}
+setTimeout(spawnShoot, 2200);
+function drawStars() {
+    sCtx.clearRect(0,0,sc.width,sc.height);
+    const ng = sCtx.createRadialGradient(sc.width/2,sc.height/2,0,sc.width/2,sc.height/2,sc.width*0.5);
+    ng.addColorStop(0,'rgba(0,52,22,0.14)'); ng.addColorStop(0.6,'rgba(0,18,8,0.04)'); ng.addColorStop(1,'transparent');
+    sCtx.fillStyle=ng; sCtx.fillRect(0,0,sc.width,sc.height);
+    STARS.forEach(s=>{
+        s.a+=s.spd*s.dir; if(s.a>0.88)s.dir=-1; if(s.a<0.08)s.dir=1;
+        sCtx.beginPath(); sCtx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        sCtx.fillStyle=s.green?`rgba(0,230,118,${s.a*0.5})`:`rgba(255,255,255,${s.a})`; sCtx.fill();
+    });
+    for(let i=shoots.length-1;i>=0;i--){
+        const sh=shoots[i];
+        const g=sCtx.createLinearGradient(sh.x,sh.y,sh.x+sh.len,sh.y+sh.len*0.28);
+        g.addColorStop(0,'transparent'); g.addColorStop(1,`rgba(0,230,118,${sh.a*0.7})`);
+        sCtx.save(); sCtx.strokeStyle=g; sCtx.lineWidth=1.2;
+        sCtx.beginPath(); sCtx.moveTo(sh.x,sh.y); sCtx.lineTo(sh.x+sh.len,sh.y+sh.len*0.28); sCtx.stroke(); sCtx.restore();
+        sh.x+=sh.spd; sh.y+=sh.spd*0.28; sh.a-=0.018; if(sh.a<=0)shoots.splice(i,1);
+    }
+    requestAnimationFrame(drawStars);
+}
+drawStars();
+
+// ── Intro sequence ──
+const delay = ms => new Promise(r => setTimeout(r, ms));
+const loader   = document.getElementById('loader');
+const logoWrap = document.getElementById('logo-wrap');
+const mainSite = document.getElementById('main-site');
+const w1   = document.getElementById('w1');
+const w2   = document.getElementById('w2');
+const w3   = document.getElementById('w3');
+const seg1   = document.getElementById('seg1');
+const seg2   = document.getElementById('seg2');
+const endDot = document.getElementById('endDot');
+
+function growSeg(seg, ms) {
+    seg.style.transition = `clip-path ${ms}ms cubic-bezier(0.4, 0, 0.3, 1)`;
+    seg.style.clipPath = 'inset(0 0% 0 0)';
+    return delay(ms);
+}
+
+function showWord(el) {
+    el.classList.add('visible');
+}
+
+async function run() {
+    await delay(700);
+
+    showWord(w1);
+    await delay(300);
+
+    await growSeg(seg1, 1400);
+    showWord(w2);
+    await delay(300);
+
+    await growSeg(seg2, 1400);
+    showWord(w3);
+    endDot.classList.add('visible');
+    await delay(600);
+
+    loader.classList.add('out');
+    await delay(750);
+
+    // Fade logo in — force reflow so transition fires correctly
+    logoWrap.style.transition = 'none';
+    logoWrap.style.opacity = '0';
+    void logoWrap.offsetHeight;  // flush layout
+    logoWrap.style.transition = 'opacity 1.4s ease';
+    logoWrap.style.opacity = '1';
+    document.getElementById('logo-canvas').classList.add('in');
+    await delay(3800);
+
+    // Fade logo out, then fade entire screen to black and navigate
+    logoWrap.style.transition = 'opacity 1.2s ease';
+    logoWrap.style.opacity = '0';
+    await delay(800);
+
+    // Full-screen black overlay fades in over everything
+    const veil = document.createElement('div');
+    veil.style.cssText = 'position:fixed;inset:0;background:#04050a;opacity:0;z-index:9999;transition:opacity 0.9s ease;pointer-events:none;';
+    document.body.appendChild(veil);
+    void veil.offsetHeight; // force reflow
+    veil.style.opacity = '1';
+    await delay(1000);
+    window.location.href = 'main.html';
+}
+
+// ── Logo image — remove background via canvas pixel processing ──
+const logoCanvas = document.getElementById('logo-canvas');
+const logoCtx = logoCanvas.getContext('2d');
+const logoImg = new Image();
+logoImg.src = 'Elyra Ai solution.png';
+logoImg.onload = function () {
+    logoCanvas.width  = logoImg.naturalWidth;
+    logoCanvas.height = logoImg.naturalHeight;
+    logoCtx.drawImage(logoImg, 0, 0);
+
+    const imageData = logoCtx.getImageData(0, 0, logoCanvas.width, logoCanvas.height);
+    const px = imageData.data;
+    const w  = logoCanvas.width;
+    const h  = logoCanvas.height;
+
+    // Sample all four corners to get the average background colour
+    function px3(x, y) { const i = (y * w + x) * 4; return [px[i], px[i+1], px[i+2]]; }
+    const corners = [px3(0,0), px3(w-1,0), px3(0,h-1), px3(w-1,h-1)];
+    const bgR = Math.round(corners.reduce((s,c)=>s+c[0],0) / 4);
+    const bgG = Math.round(corners.reduce((s,c)=>s+c[1],0) / 4);
+    const bgB = Math.round(corners.reduce((s,c)=>s+c[2],0) / 4);
+
+    const tol  = 40;   // hard removal threshold
+    const fade = 30;   // soft fade zone beyond threshold
+
+    for (let i = 0; i < px.length; i += 4) {
+        const dr = px[i]   - bgR;
+        const dg = px[i+1] - bgG;
+        const db = px[i+2] - bgB;
+        const dist = Math.sqrt(dr*dr + dg*dg + db*db);
+        if (dist < tol) {
+            px[i+3] = 0;
+        } else if (dist < tol + fade) {
+            px[i+3] = Math.round(((dist - tol) / fade) * 255);
+        }
+    }
+    logoCtx.putImageData(imageData, 0, 0);
+};
+
+run();
+</script>
+</body>
+</html>

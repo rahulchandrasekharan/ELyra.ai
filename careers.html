@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers — Elyra AI Solutions</title>
+<meta name="description" content="Join Elyra AI Solutions. We're hiring engineers, designers and AI specialists to build the next generation of enterprise software.">
+<meta name="keywords" content="Elyra AI jobs, careers, AI jobs, enterprise software jobs, tech hiring, software engineer jobs">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Careers — Elyra AI Solutions">
+<meta property="og:description" content="Build enterprise AI that reshapes industries. View open positions at Elyra AI Solutions.">
+<meta property="og:image" content="/Elyra Ai solution.png">
+<meta property="og:url" content="https://elyraai.com/careers.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://elyraai.com/careers.html">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#04050a;--green:#00c896;--green-bright:#00e676;--dim:rgba(0,200,150,.45);--border:rgba(0,200,150,.14);--glass:rgba(4,14,10,.72)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:rgba(255,255,255,.88);font-family:'Segoe UI',Arial,sans-serif;overflow-x:hidden}
+#bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:64px;background:rgba(4,5,10,.88);border-bottom:1px solid var(--border);backdrop-filter:blur(14px)}
+.nav-logo{font-size:13px;letter-spacing:5px;font-weight:300;color:#fff;text-transform:uppercase;text-decoration:none}
+.nav-logo span{color:var(--green-bright)}
+.nav-back{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border:1px solid var(--border);color:var(--green);text-decoration:none;border-radius:2px;transition:border-color .25s,background .25s}
+.nav-back:hover{border-color:var(--green);background:rgba(0,200,150,.08)}
+@media(max-width:760px){nav{padding:0 20px}}
+
+.page-hero{position:relative;z-index:2;padding:140px 60px 50px;max-width:1160px;margin:0 auto}
+.page-tag{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.page-title{font-size:clamp(32px,5vw,64px);font-weight:200;letter-spacing:3px;text-transform:uppercase;line-height:1.1}
+.page-title strong{color:var(--green-bright);font-weight:600}
+.page-sub{font-size:14px;color:rgba(255,255,255,.45);margin-top:16px;max-width:500px;line-height:1.7}
+.page-rule{width:160px;height:1px;background:linear-gradient(90deg,var(--green),transparent);margin:24px 0 0}
+@media(max-width:760px){.page-hero{padding:120px 20px 40px}}
+
+/* filters */
+.filters{position:relative;z-index:2;padding:24px 60px;max-width:1160px;margin:0 auto;display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:760px){.filters{padding:16px 20px}}
+.filter-btn{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border:1px solid var(--border);background:transparent;color:rgba(255,255,255,.45);border-radius:2px;cursor:pointer;transition:all .2s}
+.filter-btn.active,.filter-btn:hover{border-color:var(--green);color:var(--green);background:rgba(0,200,150,.06)}
+
+/* jobs */
+.jobs-section{position:relative;z-index:2;padding:0 60px 80px;max-width:1160px;margin:0 auto}
+@media(max-width:760px){.jobs-section{padding:0 20px 60px}}
+.jobs-count{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:20px}
+.jobs-grid{display:flex;flex-direction:column;gap:14px}
+
+.job-card{background:var(--glass);border:1px solid var(--border);border-radius:10px;padding:28px 32px;cursor:pointer;transition:border-color .25s,transform .2s;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px}
+.job-card:hover{border-color:rgba(0,200,150,.3);transform:translateX(4px)}
+@media(max-width:600px){.job-card{grid-template-columns:1fr;padding:20px}}
+.job-title{font-size:17px;font-weight:600;letter-spacing:.4px;color:rgba(255,255,255,.92);margin-bottom:8px}
+.job-dept{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.job-tags{display:flex;gap:8px;flex-wrap:wrap}
+.job-tag{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border:1px solid var(--border);border-radius:10px;color:rgba(255,255,255,.4)}
+.job-apply-btn{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px 24px;border:1px solid var(--green);background:transparent;color:var(--green);border-radius:2px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.job-apply-btn:hover{background:var(--green);color:#04050a}
+
+/* loading / empty */
+.loading{text-align:center;padding:60px 0;color:rgba(255,255,255,.3);font-size:12px;letter-spacing:3px}
+.loading-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.2s infinite;margin:0 3px}
+.loading-dot:nth-child(2){animation-delay:.2s}.loading-dot:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
+.empty-state{text-align:center;padding:80px 0;color:rgba(255,255,255,.25)}
+.empty-state h3{font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;font-weight:300}
+.empty-state p{font-size:12px}
+
+/* JOB DETAIL MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(4,5,10,.94);z-index:400;overflow-y:auto;backdrop-filter:blur(8px)}
+.modal-overlay.open{display:flex;align-items:flex-start;justify-content:center;padding:60px 20px 40px}
+.modal{background:#070d0a;border:1px solid var(--border);border-radius:12px;max-width:700px;width:100%;position:relative}
+.modal-close{position:absolute;top:18px;right:18px;background:none;border:1px solid var(--border);color:var(--green);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:1}
+.modal-close:hover{border-color:var(--green);background:rgba(0,200,150,.1)}
+
+.jd-header{padding:36px 36px 24px;border-bottom:1px solid var(--border)}
+.jd-dept{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.jd-title{font-size:clamp(18px,3vw,26px);font-weight:300;letter-spacing:1px;margin-bottom:16px;color:rgba(255,255,255,.95);line-height:1.3}
+.jd-meta{display:flex;gap:20px;flex-wrap:wrap}
+.jd-meta-item{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.jd-meta-item span{color:rgba(255,255,255,.6);margin-left:4px}
+
+.jd-body{padding:28px 36px}
+.jd-section{margin-bottom:24px}
+.jd-section h4{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.jd-section p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.8}
+.jd-section ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.jd-section ul li{font-size:12.5px;color:rgba(255,255,255,.6);padding-left:16px;position:relative;line-height:1.6}
+.jd-section ul li::before{content:'▸';position:absolute;left:0;color:var(--green);font-size:10px;top:3px}
+.jd-skills{display:flex;gap:8px;flex-wrap:wrap}
+.jd-skill{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border:1px solid rgba(0,200,150,.25);border-radius:10px;color:var(--green)}
+
+.jd-footer{padding:20px 36px 28px;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
+.btn-apply{font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:12px 32px;background:var(--green);color:#04050a;border:none;border-radius:2px;cursor:pointer;font-weight:600;transition:background .2s}
+.btn-apply:hover{background:var(--green-bright)}
+
+/* APPLICATION MODAL */
+.apply-overlay{display:none;position:fixed;inset:0;background:rgba(4,5,10,.96);z-index:500;overflow-y:auto;backdrop-filter:blur(10px)}
+.apply-overlay.open{display:flex;align-items:flex-start;justify-content:center;padding:60px 20px 40px}
+.apply-modal{background:#070d0a;border:1px solid var(--border);border-radius:12px;max-width:560px;width:100%;padding:36px;position:relative}
+.apply-modal h3{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.apply-modal h2{font-size:20px;font-weight:300;color:rgba(255,255,255,.9);margin-bottom:28px;letter-spacing:.5px}
+
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:7px}
+.form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:4px;padding:11px 14px;color:rgba(255,255,255,.85);font-size:13px;font-family:inherit;transition:border-color .2s;outline:none}
+.form-group input:focus,.form-group textarea:focus{border-color:rgba(0,200,150,.4)}
+.form-group textarea{resize:vertical;min-height:80px}
+
+.file-drop{border:1px dashed rgba(0,200,150,.25);border-radius:6px;padding:28px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
+.file-drop:hover,.file-drop.drag{border-color:rgba(0,200,150,.5);background:rgba(0,200,150,.04)}
+.file-drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.file-drop-icon{font-size:24px;margin-bottom:8px}
+.file-drop-text{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px}
+.file-drop-text strong{color:var(--green);display:block;margin-bottom:4px;font-size:12px}
+.file-name{font-size:11px;color:var(--green);margin-top:8px;font-weight:600}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+
+.btn-submit{width:100%;padding:14px;background:var(--green);color:#04050a;border:none;border-radius:2px;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .2s;margin-top:8px}
+.btn-submit:hover{background:var(--green-bright)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed}
+
+.form-error{font-size:11px;color:#ff5252;margin-top:12px;text-align:center;display:none}
+.form-success{display:none;text-align:center;padding:20px 0}
+.form-success .success-icon{font-size:40px;margin-bottom:12px}
+.form-success h3{font-size:14px;font-weight:600;color:var(--green-bright);margin-bottom:8px;letter-spacing:1px}
+.form-success p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.7}
+.form-success .app-id{font-size:10px;color:var(--dim);margin-top:12px;letter-spacing:1px}
+
+footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+@media(max-width:760px){footer{padding:24px 20px;flex-direction:column;text-align:center}}
+.foot-copy{font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.18)}
+.foot-brand{font-size:10px;letter-spacing:2px;color:var(--dim)}
+
+::selection{background:rgba(0,200,150,.3)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<nav>
+  <a class="nav-logo" href="main.html">Elyra <span>AI</span> Solutions</a>
+  <a class="nav-back" href="main.html">← Back to Home</a>
+</nav>
+
+<div class="page-hero">
+  <p class="page-tag">Join Our Team</p>
+  <h1 class="page-title">Open <strong>Positions</strong></h1>
+  <p class="page-sub">Build enterprise AI that reshapes industries. We're looking for people who think differently.</p>
+  <div class="page-rule"></div>
+</div>
+
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-filter="">All Departments</button>
+</div>
+
+<div class="jobs-section">
+  <div class="jobs-count" id="jobs-count"></div>
+  <div class="jobs-grid" id="jobs-grid">
+    <div class="loading"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div>
+  </div>
+</div>
+
+<!-- Job Detail Modal -->
+<div class="modal-overlay" id="job-modal">
+  <div class="modal">
+    <button class="modal-close" id="jd-close">✕</button>
+    <div class="jd-header">
+      <div class="jd-dept" id="jd-dept"></div>
+      <h2 class="jd-title" id="jd-title"></h2>
+      <div class="jd-meta" id="jd-meta"></div>
+    </div>
+    <div class="jd-body">
+      <div class="jd-section" id="jd-desc-section">
+        <h4>About the Role</h4>
+        <p id="jd-desc"></p>
+      </div>
+      <div class="jd-section" id="jd-req-section">
+        <h4>Requirements</h4>
+        <ul id="jd-requirements"></ul>
+      </div>
+      <div class="jd-section" id="jd-skills-section">
+        <h4>Skills</h4>
+        <div class="jd-skills" id="jd-skills"></div>
+      </div>
+    </div>
+    <div class="jd-footer">
+      <button class="btn-apply" id="btn-open-apply">Apply for this Role →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Application Modal -->
+<div class="apply-overlay" id="apply-modal">
+  <div class="apply-modal">
+    <button class="modal-close" id="apply-close">✕</button>
+
+    <div id="apply-form-wrap">
+      <h3 id="apply-subtitle">Applying for</h3>
+      <h2 id="apply-job-title">Position</h2>
+
+      <form id="apply-form" novalidate>
+        <input type="hidden" id="field-job-id">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="field-name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" id="field-email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="field-phone" placeholder="+91 XXXXX XXXXX">
+        </div>
+
+        <div class="form-group">
+          <label>Cover Letter <span style="color:rgba(255,255,255,.25)">(optional)</span></label>
+          <textarea id="field-cover" placeholder="Tell us why you're a great fit..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Resume / CV *</label>
+          <div class="file-drop" id="file-drop">
+            <input type="file" id="field-resume" accept=".pdf,.doc,.docx" required>
+            <div class="file-drop-icon">📄</div>
+            <div class="file-drop-text">
+              <strong>Click to upload or drag & drop</strong>
+              PDF or DOCX — max 5 MB
+            </div>
+            <div class="file-name" id="file-name"></div>
+          </div>
+        </div>
+
+        <div class="form-error" id="form-error"></div>
+        <button type="submit" class="btn-submit" id="btn-submit">Submit Application</button>
+      </form>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <div class="success-icon">✅</div>
+      <h3>Application Received</h3>
+      <p>Thank you for applying. Our AI will screen your resume and we'll be in touch if you're a strong match.</p>
+      <div class="app-id" id="success-app-id"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="foot-copy">© 2025 Elyra AI Solutions. All rights reserved.</span>
+  <span class="foot-brand">Intelligence · Innovation · Impact</span>
+</footer>
+
+<script>
+const API = '/api';
+let allJobs = [];
+let selectedJob = null;
+let activeFilter = '';
+
+// ── Load Jobs ──
+async function loadJobs() {
+  const grid = document.getElementById('jobs-grid');
+  try {
+    const res = await fetch(`${API}/jobs`);
+    const { jobs } = await res.json();
+    allJobs = jobs || [];
+
+    // Build department filters
+    const depts = [...new Set(allJobs.map(j => j.department).filter(Boolean))];
+    const filterBar = document.getElementById('filters');
+    depts.forEach(d => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.dataset.filter = d;
+      btn.textContent = d;
+      btn.addEventListener('click', () => setFilter(d, btn));
+      filterBar.appendChild(btn);
+    });
+
+    renderJobs(allJobs);
+  } catch (e) {
+    grid.innerHTML = '<div class="empty-state"><h3>Could not connect</h3><p>Make sure the backend is running.</p></div>';
+  }
+}
+
+function setFilter(dept, btn) {
+  activeFilter = dept;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = dept ? allJobs.filter(j => j.department === dept) : allJobs;
+  renderJobs(filtered);
+}
+
+function renderJobs(jobs) {
+  const grid = document.getElementById('jobs-grid');
+  const count = document.getElementById('jobs-count');
+  grid.innerHTML = '';
+
+  if (!jobs || jobs.length === 0) {
+    count.textContent = '';
+    grid.innerHTML = '<div class="empty-state"><h3>No open positions</h3><p>Check back soon — we\'re always growing.</p></div>';
+    return;
+  }
+
+  count.textContent = `${jobs.length} position${jobs.length !== 1 ? 's' : ''} available`;
+
+  jobs.forEach(job => {
+    const card = document.createElement('div');
+    card.className = 'job-card';
+    card.innerHTML = `
+      <div>
+        <div class="job-dept">${job.department || ''}</div>
+        <div class="job-title">${job.title}</div>
+        <div class="job-tags">
+          ${job.type ? `<span class="job-tag">${job.type}</span>` : ''}
+          ${job.location ? `<span class="job-tag">${job.location}</span>` : ''}
+          ${(job.skills || []).slice(0, 3).map(s => `<span class="job-tag">${s}</span>`).join('')}
+        </div>
+      </div>
+      <button class="job-apply-btn">View & Apply</button>`;
+    card.addEventListener('click', () => openJobDetail(job));
+    card.querySelector('.job-apply-btn').addEventListener('click', e => {
+      e.stopPropagation();
+      openJobDetail(job);
+    });
+    grid.appendChild(card);
+  });
+}
+
+// ── Job Detail Modal ──
+function openJobDetail(job) {
+  selectedJob = job;
+  document.getElementById('jd-dept').textContent = job.department || '';
+  document.getElementById('jd-title').textContent = job.title;
+
+  const meta = [
+    job.type ? `<div class="jd-meta-item">Type<span>${job.type}</span></div>` : '',
+    job.location ? `<div class="jd-meta-item">Location<span>${job.location}</span></div>` : '',
+    job.salary ? `<div class="jd-meta-item">Salary<span>${job.salary}</span></div>` : '',
+  ].join('');
+  document.getElementById('jd-meta').innerHTML = meta;
+
+  const desc = document.getElementById('jd-desc');
+  const descSec = document.getElementById('jd-desc-section');
+  if (job.description) { desc.textContent = job.description; descSec.style.display = ''; }
+  else descSec.style.display = 'none';
+
+  const reqList = document.getElementById('jd-requirements');
+  const reqSec = document.getElementById('jd-req-section');
+  if (job.requirements && job.requirements.length) {
+    reqList.innerHTML = job.requirements.map(r => `<li>${r}</li>`).join('');
+    reqSec.style.display = '';
+  } else reqSec.style.display = 'none';
+
+  const skillsDiv = document.getElementById('jd-skills');
+  const skillsSec = document.getElementById('jd-skills-section');
+  if (job.skills && job.skills.length) {
+    skillsDiv.innerHTML = job.skills.map(s => `<span class="jd-skill">${s}</span>`).join('');
+    skillsSec.style.display = '';
+  } else skillsSec.style.display = 'none';
+
+  document.getElementById('job-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeJobModal() {
+  document.getElementById('job-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('jd-close').addEventListener('click', closeJobModal);
+document.getElementById('job-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('job-modal')) closeJobModal();
+});
+
+document.getElementById('btn-open-apply').addEventListener('click', () => {
+  closeJobModal();
+  openApplyModal();
+});
+
+// ── Apply Modal ──
+function openApplyModal() {
+  if (!selectedJob) return;
+  document.getElementById('apply-job-title').textContent = selectedJob.title;
+  document.getElementById('field-job-id').value = selectedJob._id;
+  document.getElementById('apply-form-wrap').style.display = '';
+  document.getElementById('form-success').style.display = 'none';
+  document.getElementById('form-error').style.display = 'none';
+  document.getElementById('apply-form').reset();
+  document.getElementById('file-name').textContent = '';
+  document.getElementById('apply-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeApplyModal() {
+  document.getElementById('apply-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('apply-close').addEventListener('click', closeApplyModal);
+document.getElementById('apply-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('apply-modal')) closeApplyModal();
+});
+
+// File name preview
+document.getElementById('field-resume').addEventListener('change', e => {
+  const f = e.target.files[0];
+  document.getElementById('file-name').textContent = f ? `✓ ${f.name}` : '';
+});
+
+// Drag styling
+const dropZone = document.getElementById('file-drop');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag'); });
+
+// ── Submit Application ──
+document.getElementById('apply-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const errorEl = document.getElementById('form-error');
+  const btn = document.getElementById('btn-submit');
+  errorEl.style.display = 'none';
+
+  const jobId = document.getElementById('field-job-id').value;
+  const name = document.getElementById('field-name').value.trim();
+  const email = document.getElementById('field-email').value.trim();
+  const phone = document.getElementById('field-phone').value.trim();
+  const coverLetter = document.getElementById('field-cover').value.trim();
+  const resumeFile = document.getElementById('field-resume').files[0];
+
+  if (!name || !email) { showError('Name and email are required.'); return; }
+  if (!resumeFile) { showError('Please upload your resume.'); return; }
+  if (resumeFile.size > 5 * 1024 * 1024) { showError('File size must be under 5 MB.'); return; }
+
+  const formData = new FormData();
+  formData.append('jobId', jobId);
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append('phone', phone);
+  formData.append('coverLetter', coverLetter);
+  formData.append('resume', resumeFile);
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  try {
+    const res = await fetch(`${API}/applications`, { method: 'POST', body: formData });
+    const data = await res.json();
+
+    if (!res.ok) { showError(data.error || 'Submission failed.'); return; }
+
+    document.getElementById('apply-form-wrap').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    document.getElementById('success-app-id').textContent = `Application ID: ${data.applicationId}`;
+  } catch (err) {
+    showError('Could not connect to server. Please try again.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Submit Application';
+  }
+});
+
+function showError(msg) {
+  const el = document.getElementById('form-error');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeApplyModal(); closeJobModal(); }
+});
+
+loadJobs();
+</script>
+
+<script>
+(function(){
+  const cv=document.getElementById('bg-canvas');
+  const cx=cv.getContext('2d');
+  let W,H;
+  function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  function drawEye(x,y,size,alpha,rot,ph){
+    cx.save();cx.translate(x,y);cx.rotate(rot);
+    const hw=size/2,hh=size*.22;
+    cx.beginPath();cx.moveTo(-hw,0);cx.quadraticCurveTo(0,-hh*2.1,hw,0);cx.quadraticCurveTo(0,hh*2.1,-hw,0);
+    cx.strokeStyle=`rgba(0,200,150,${alpha*.55})`;cx.lineWidth=1.1;cx.stroke();
+    const iR=hh*.88;
+    [.28,.6,1].forEach((f,i)=>{cx.beginPath();cx.arc(0,0,iR*f,0,Math.PI*2);cx.strokeStyle=`rgba(0,200,150,${alpha*[.55,.38,.22][i]})`;cx.lineWidth=i===0?.8:.55;cx.stroke();});
+    const pg=cx.createRadialGradient(0,0,0,0,0,iR*.22);
+    pg.addColorStop(0,`rgba(0,230,118,${alpha*(.45+.3*Math.sin(ph))})`);pg.addColorStop(1,'rgba(0,230,118,0)');
+    cx.beginPath();cx.arc(0,0,iR*.22,0,Math.PI*2);cx.fillStyle=pg;cx.fill();
+    const tX=hw*.52,tLen=size*.14;
+    [-hh*.55,-hh*.2,hh*.2,hh*.55].forEach(ty=>[-1,1].forEach(side=>{
+      const ox=side*tX,bend=ty<0?-hh*.12:hh*.12;
+      cx.beginPath();cx.moveTo(ox,ty);cx.lineTo(ox+side*tLen,ty);cx.strokeStyle=`rgba(0,200,150,${alpha*.45})`;cx.lineWidth=.7;cx.stroke();
+      cx.beginPath();cx.moveTo(ox+side*tLen,ty);cx.lineTo(ox+side*tLen,ty+bend);cx.stroke();
+      cx.beginPath();cx.arc(ox+side*tLen,ty+bend,1.4,0,Math.PI*2);cx.fillStyle=`rgba(0,230,118,${alpha*.65})`;cx.fill();
+    }));
+    const scanY=hh*.75*Math.sin(ph*.7);
+    const clampX=hw*.82*Math.sqrt(Math.max(0,1-(scanY/(hh*1.05))**2));
+    cx.beginPath();cx.moveTo(-clampX,scanY);cx.lineTo(clampX,scanY);
+    cx.strokeStyle=`rgba(0,230,118,${alpha*.3*(.5+.5*Math.cos(ph*.7))})`;cx.lineWidth=.8;cx.stroke();
+    cx.restore();
+  }
+  const EYES=[
+    {xr:.5,yr:.35,sizer:.48,baseA:.12,rot:0,rotSpd:.00008,ph:0,phSpd:.009},
+    {xr:.1,yr:.2,sizer:.2,baseA:.08,rot:.15,rotSpd:-.00012,ph:2,phSpd:.011},
+    {xr:.9,yr:.78,sizer:.18,baseA:.07,rot:-.1,rotSpd:.00015,ph:1,phSpd:.010},
+    {xr:.85,yr:.12,sizer:.13,baseA:.06,rot:.08,rotSpd:-.0001,ph:3.5,phSpd:.013},
+    {xr:.15,yr:.88,sizer:.12,baseA:.05,rot:-.05,rotSpd:.00013,ph:5,phSpd:.012},
+  ];
+  let PARTS=[];
+  function buildParts(){PARTS=Array.from({length:55},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.18,vy:-(Math.random()*.35+.08),r:Math.random()*1.1+.25,ph:Math.random()*Math.PI*2,ps:.018+Math.random()*.022,green:Math.random()>.7}));}
+  buildParts();window.addEventListener('resize',buildParts);
+  let tick=0;
+  function frame(){
+    cx.clearRect(0,0,W,H);
+    const rg=cx.createRadialGradient(W/2,H*.35,0,W/2,H*.35,W*.6);
+    rg.addColorStop(0,'rgba(0,55,26,.11)');rg.addColorStop(.7,'rgba(0,18,8,.04)');rg.addColorStop(1,'transparent');
+    cx.fillStyle=rg;cx.fillRect(0,0,W,H);
+    tick++;
+    const rx=W/2,ry=H*.35,rayRot=tick*.00025;
+    for(let i=0;i<6;i++){const ang=rayRot+(i/6)*Math.PI*2;const len=Math.min(W,H)*.72;const ex=rx+Math.cos(ang)*len,ey=ry+Math.sin(ang)*len;const spread=len*.06;const px=-Math.sin(ang)*spread,py=Math.cos(ang)*spread;cx.beginPath();cx.moveTo(rx,ry);cx.lineTo(ex+px,ey+py);cx.lineTo(ex-px,ey-py);cx.closePath();const rg2=cx.createLinearGradient(rx,ry,ex,ey);rg2.addColorStop(0,'rgba(0,200,150,.055)');rg2.addColorStop(.4,'rgba(0,200,150,.018)');rg2.addColorStop(1,'rgba(0,200,150,0)');cx.fillStyle=rg2;cx.fill();}
+    EYES.forEach(e=>{e.ph+=e.phSpd;e.rot+=e.rotSpd;drawEye(e.xr*W,e.yr*H,e.sizer*Math.min(W,H),e.baseA*(.75+.25*Math.sin(e.ph*.4)),e.rot,e.ph);});
+    PARTS.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.ph+=p.ps;if(p.y<-4){p.y=H+4;p.x=Math.random()*W;}const a=(p.green?.18:.1)*(.5+.5*Math.sin(p.ph));cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.green?`rgba(0,230,118,${a})`:`rgba(0,200,150,${a})`;cx.fill();});
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+</body>
+</html>
