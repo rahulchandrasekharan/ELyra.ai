@@ -537,7 +537,10 @@ async function loadApps(query) {
           </select>
         </td>
         <td>${fmt(a.createdAt)}</td>
-        <td><a href="/${a.resumePath.replace(/\\/g,'/')}" target="_blank" class="btn btn-sm btn-outline">View CV</a></td>
+        <td style="display:flex;gap:6px;align-items:center">
+          <a href="/${a.resumePath.replace(/\\/g,'/')}" target="_blank" class="btn btn-sm btn-outline">View CV</a>
+          <button onclick="deleteApp('${a._id}',this)" class="btn btn-sm" style="background:rgba(255,50,50,.15);border-color:rgba(255,50,50,.3);color:#ff6b6b">Delete</button>
+        </td>
       </tr>`).join('') || '<tr><td colspan="7" class="loading">No applications found</td></tr>';
   } catch(e) { toast(e.message, true); }
 }
@@ -545,8 +548,17 @@ async function loadApps(query) {
 function filterApps(q) { loadApps(q); }
 
 async function updateAppStatus(id, status) {
-  try { await api('PUT', `/applications/${id}/status`, { status }); toast('Status updated'); }
+  try { await api('PUT', `/applications/${id}/status`, { status }); toast('Status updated — applicant notified by email'); }
   catch(e) { toast(e.message, true); }
+}
+
+async function deleteApp(id, btn) {
+  if (!confirm('Delete this application? This cannot be undone.')) return;
+  try {
+    await api('DELETE', `/applications/${id}`);
+    btn.closest('tr').remove();
+    toast('Application deleted');
+  } catch(e) { toast(e.message, true); }
 }
 
 // ── Init ──
