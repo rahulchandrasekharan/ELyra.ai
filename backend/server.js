@@ -7,6 +7,7 @@ const connectDB = require('./config/db');
 const { startBlogScheduler } = require('./agents/blogAgent');
 
 const app = express();
+app.set('trust proxy', 1);
 
 // ── Connect DB ──
 connectDB();
