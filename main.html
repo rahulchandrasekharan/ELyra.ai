@@ -1056,7 +1056,7 @@ document.getElementById('cinput').addEventListener('keydown',e=>{if(e.key==='Ent
 (async function(){
   const grid = document.getElementById('bp-grid');
   try {
-    const res = await fetch('/api/blogs?limit=3');
+    const res = await fetch('https://elyra-ai.onrender.com/api/blogs?limit=3');
     const { blogs } = await res.json();
     if (!blogs || blogs.length === 0) { grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px 0;color:rgba(255,255,255,.25);font-size:11px;letter-spacing:2px">No posts yet.</div>'; return; }
     grid.innerHTML = '';
@@ -1089,7 +1089,7 @@ document.getElementById('cform').addEventListener('submit', async function(e) {
   if (!name || !email || !message) { msg.style.color='#ff5252'; msg.textContent='Please fill in all required fields.'; return; }
   btn.textContent = 'Sending...'; btn.disabled = true; msg.textContent = '';
   try {
-    const res = await fetch('/api/contact', {
+    const res = await fetch('https://elyra-ai.onrender.com/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, service, message })
